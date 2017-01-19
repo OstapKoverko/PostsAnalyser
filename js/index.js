@@ -74,12 +74,12 @@ app.config(function($routeProvider) {
   $routeProvider
         
     .when("/postList", {
-      template : "<table>   <tr ng-repeat= \"x in posts\"> <td> {{ x.userId }} </td>    <td>  <a href=\"#{{ x.id }}\">     {{ x.id }}  </a> </td>  <td>{{ x.title }}</td>    <td>{{ x.body }}</td>  </tr>    </table>",
+      templateUrl : "templates/posts.html",
       controller : "postsController"
     })
   
     .when("/:id", {
-      template : "<table>  <tr ng-repeat= \"x in commentsByPostId\"> <td>{{ x.postId }}</td>    <td>{{ x.id }}</td>    <td>{{ x.name }}</td>    <td>{{ x.email }}</td> <td>{{ x.body }}</td>  </tr></table> ",
+      templateUrl : "templates/commentsByPostId.html",
       controller : "postController"
     });
   
