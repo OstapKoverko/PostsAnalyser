@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular</title>
+
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  <script type="text/javascript" src="js/index.js"</script>    
+
+</head>
+<body>
+
+  <div ng-app="myApp" ng-controller="postsController">
+    <!-- <pre>{{postById | json}}</pre> -->
+    <p><a href="#postList">Posts list</a></p>
+    <div ng-view></div>    
+  </div>  
+
+  
+
+</body>
+</html>
