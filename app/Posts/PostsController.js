@@ -1,9 +1,9 @@
 app.controller('postsController', function($scope, PostsService) {
   PostsService.getPosts(
-    function(result){
+    function getPosts(result){
       $scope.posts = result;
     }, 
-    function(result){
+    function printError(result){
       console.log(result);
     }
   );  

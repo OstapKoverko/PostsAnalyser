@@ -1,15 +1,20 @@
 app.controller('postController', function($scope, $routeParams, PostsService){
-//  THIS METHOD IS NOT USED
-//   PostsService.getPostById(5, function(result){
-//     $scope.postById = result;
-//   }); 
+  PostsService.getPostById(
+    $routeParams.id,
+    function getPostById(result){
+      $scope.post = result;
+    },
+    function printError(result){
+      console.log(result);  
+    }
+  ); 
   PostsService.getCommentsByPostId(
     $routeParams.id, 
-    function(result){
-      $scope.commentsByPostId = result;
+    function getCommentsByPostId(result){
+      $scope.comments = result;
       console.log("PostId: " + $routeParams.id);
     },
-    function(result){
+    function printError(result){
       console.log(result);  
     }
   );

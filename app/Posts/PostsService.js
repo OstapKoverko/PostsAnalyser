@@ -9,16 +9,15 @@ app.service('PostsService', function($http) {
       }
     );
   };
-// THIS SERVICE IS NOT USED
-//   this.getPostById = function (id, callback) {
-//     $http.get("https://jsonplaceholder.typicode.com/posts/" + id).then(
-//       function (response) {
-//         callback(response.data);    
-//       },
-//       function (response) {
-//         callback("Status code: " + response.status);
-//       });
-//   };
+  this.getPostById = function (id, callback, callbackError) {
+    $http.get("https://jsonplaceholder.typicode.com/posts/" + id).then(
+      function (response) {
+        callback(response.data);
+      },
+      function (response) {
+        callbackError("GetPostById method's status: " + response.status + " " + response.statusText);
+      });
+  };
   this.getCommentsByPostId = function (postId, callback, callbackError) {
     $http.get("https://jsonplaceholder.typicode.com/posts/" + postId + "/comments").then(
       function (response) {
