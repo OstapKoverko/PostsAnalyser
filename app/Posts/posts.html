@@ -5,10 +5,10 @@
     <th> Title </th>
     <th> Body </th>
   </tr>
-  <tr ng-repeat= "x in posts">
-  	<td>  <a href="#posts/{{ x.id }}"> {{ x.id }}  </a> </td>
-  	<td> {{ x.userId }} </td>
-    <td> {{ x.title }} </td>
-    <td> {{ x.body }} </td>
+  <tr ng-repeat= "post in posts">
+  	<td>  <a href="#posts/{{ post.id }}"> {{ post.id }}  </a> </td>
+  	<td> {{ post.userId }} </td>
+    <td> {{ post.title }} </td>
+    <td> {{ post.body }} </td>
   </tr>
 </table>
