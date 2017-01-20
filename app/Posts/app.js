@@ -2,12 +2,12 @@ var app = angular.module('myApp', ["ngRoute"]);
 
 app.config(function($routeProvider) {
   $routeProvider  
-  .when("/postsList", {
-    templateUrl : "posts.html",
+  .when("/posts", {
+    templateUrl : "app/Posts/posts.html",
     controller : "postsController"
   })  
   .when("/posts/:id", {
-    templateUrl : "post.html",
+    templateUrl : "app/Posts/post.html",
     controller : "postController"
   });  
 });

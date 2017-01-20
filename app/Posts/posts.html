@@ -1,7 +1,13 @@
 <table>
+  <tr>
+  	<th> Id </th>
+  	<th> User id </th>
+    <th> Title </th>
+    <th> Body </th>
+  </tr>
   <tr ng-repeat= "x in posts">
+  	<td>  <a href="#posts/{{ x.id }}"> {{ x.id }}  </a> </td>
   	<td> {{ x.userId }} </td>
-    <td>  <a href="#posts/{{ x.id }}"> {{ x.id }}  </a> </td>
     <td> {{ x.title }} </td>
     <td> {{ x.body }} </td>
   </tr>

@@ -1,9 +1,16 @@
 <table>
+ 	<tr>
+   	<th> Id </th>
+    <th> Post id </th>
+    <th> Name </th>
+    <th> Email </th>
+    <th> Body </th>  
+ 	</tr>
   <tr ng-repeat= "x in commentsByPostId">
-  	<td>{{ x.postId }}</td>
-    <td>{{ x.id }}</td>
-    <td>{{ x.name }}</td>
-    <td>{{ x.email }}</td>
-    <td>{{ x.body }}</td>
+  	<td> {{ x.id }} </td>
+    <td> {{ x.postId }} </td>
+    <td> {{ x.name }} </td>
+    <td> {{ x.email }} </td>
+    <td> {{ x.body }} </td>
   </tr>
 </table> 
