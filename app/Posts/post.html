@@ -2,18 +2,18 @@
 <h3>Post by id</h3>
 
 <table>
-  <tr>
-  	 <th> Id </th>
-  	 <th> User id </th>
-    <th> Title </th>
-    <th> Body </th>
-  </tr>
-  <tr>
-  	 <td> {{ post.id }} </td>
-  	 <td> {{ post.userId }} </td>
-    <td> {{ post.title }} </td>
-    <td> {{ post.body }} </td>
-  </tr>
+	<tr>
+		<th> Id </th>
+		<th> User id </th>
+		<th> Title </th>
+		<th> Body </th>
+	</tr>
+	<tr>
+		<td> {{ post.id }} </td>
+		<td> {{ post.userId }} </td>
+		<td> {{ post.title }} </td>
+		<td> {{ post.body }} </td>
+	</tr>
 </table>
 
 <br>
@@ -23,18 +23,18 @@
 <h3>Comments by post id</h3>
 
 <table>
- 	<tr>
-   	<th> Id </th>
-    <th> Post id </th>
-    <th> Name </th>
-    <th> Email </th>
-    <th> Body </th>  
- 	</tr>
-  <tr ng-repeat= "comment in comments">
-  	<td> {{ comment.id }} </td>
-    <td> {{ comment.postId }} </td>
-    <td> {{ comment.name }} </td>
-    <td> {{ comment.email }} </td>
-    <td> {{ comment.body }} </td>
-  </tr>
+	<tr>
+		<th> Id </th>
+		<th> Post id </th>
+		<th> Name </th>
+		<th> Email </th>
+		<th> Body </th>  
+	</tr>
+	<tr ng-repeat= "comment in comments">
+		<td> {{ comment.id }} </td>
+		<td> {{ comment.postId }} </td>
+		<td> {{ comment.name }} </td>
+		<td> {{ comment.email }} </td>
+		<td> {{ comment.body }} </td>
+	</tr>
 </table> 
