@@ -1,20 +1,20 @@
-
+<form>
 <h3>Post by id</h3>
-
-<table>
-	<tr>
-		<th> Id </th>
-		<th> User id </th>
-		<th> Title </th>
-		<th> Body </th>
-	</tr>
-	<tr>
-		<td> {{ post.id }} </td>
-		<td> {{ post.userId }} </td>
-		<td> {{ post.title }} </td>
-		<td> {{ post.body }} </td>
-	</tr>
-</table>
+	<table>
+		<tr>
+			<th> Id </th>
+			<th> User id </th>
+			<th> Title </th>
+			<th> Body </th>
+		</tr>
+		<tr>
+			<td ng-bind="post.id"> </td>
+			<td ng-bind="post.userId"> </td>
+			<td ng-bind="post.title"> </td>
+			<td ng-bind="post.body"> </td>
+		</tr>
+	</table>	
+</form>
 
 <br>
 <br>
@@ -31,10 +31,10 @@
 		<th> Body </th>  
 	</tr>
 	<tr ng-repeat= "comment in comments">
-		<td> {{ comment.id }} </td>
-		<td> {{ comment.postId }} </td>
-		<td> {{ comment.name }} </td>
-		<td> {{ comment.email }} </td>
-		<td> {{ comment.body }} </td>
+		<td ng-bind="comment.id"> </td>
+		<td ng-bind="comment.postId"> </td>
+		<td ng-bind="comment.name"> </td>
+		<td ng-bind="comment.email"> </td>
+		<td ng-bind="comment.body"> </td>
 	</tr>
 </table> 

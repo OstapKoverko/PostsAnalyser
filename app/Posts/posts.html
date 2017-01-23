@@ -1,14 +1,14 @@
 <table>
-  <tr>
-  	<th> Id </th>
-  	<th> User id </th>
-    <th> Title </th>
-    <th> Body </th>
-  </tr>
-  <tr ng-repeat= "post in posts">
-  	<td>  <a href="#posts/{{ post.id }}"> {{ post.id }}  </a> </td>
-  	<td> {{ post.userId }} </td>
-    <td> {{ post.title }} </td>
-    <td> {{ post.body }} </td>
-  </tr>
+	<tr>
+		<th> Id </th>
+		<th> User id </th>
+		<th> Title </th>
+		<th> Body </th>
+	</tr>
+	<tr ng-repeat="post in posts">
+		<td><a href="#posts/{{ post.id }}"> {{ post.id }} </a> </td>
+		<td ng-bind="post.userId"> </td>
+		<td ng-bind="post.title"> </td>
+		<td ng-bind="post.body"> </td>
+	</tr>
 </table>
