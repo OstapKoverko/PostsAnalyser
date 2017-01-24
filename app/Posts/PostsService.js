@@ -1,17 +1,17 @@
 app.service('PostsService', function($http) { 
 	this.getPosts = function (callback) {
-		$http.get("https://jsonplaceholder.typicode.com/posts/").then(
-			function(response) {
-				if (response.status === 200) {
-					callback(null, response.data); 
-				} else {
-					callback("GetPosts method's status: " + response.status + " " + response.statusText, null);
-				}
+		// USE STANDART CALLBACK
+		$http.get("https://jsonplaceholder.typicode.com/posts/999").then(
+			function (response) {
+				callback(response.status, response.data);  
+			} ,
+			function (response) {
+				callback("GetPosts method's status: " + response.status + " " + response.statusText, null);	    
 			}
 		);
-	};
+	};	
 	// this.getPosts = function (callback, callbackError) {
-	// 	$http.get("https://jsonplaceholder.typicode.com/posts/").then(
+	// 	$http.get("https://jsonplaceholderr.typicode.com/posts/").then(
 	// 		function (response) {
 	// 			callback(response.data);    
 	// 		},
@@ -21,6 +21,7 @@ app.service('PostsService', function($http) {
 	// 	);
 	// };
 	this.getPostById = function (id, callback, callbackError) {
+		// USE PROMISES
 		$http.get("https://jsonplaceholder.typicode.com/posts/" + id).then(
 			function (response) {
 				callback(response.data);
@@ -30,6 +31,7 @@ app.service('PostsService', function($http) {
 			});
 	};
 	this.getCommentsByPostId = function (postId, callback, callbackError) {
+		// USE PROMISES
 		$http.get("https://jsonplaceholder.typicode.com/posts/" + postId + "/comments").then(
 			function (response) {
 				callback(response.data);    
