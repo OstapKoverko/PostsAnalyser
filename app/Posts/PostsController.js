@@ -2,10 +2,10 @@ app.controller('postsController', function($scope, PostsService) {
 	PostsService.getPosts(
 	// USE STANDART CALLBACK
 		function (err, result) {
-			if (err === 200) {
-				$scope.posts = result;	
-			} else {
+			if (err) {
 				console.log(err);
+			} else {
+				$scope.posts = result;
 			}	
 		}
 		// function getPosts(result){

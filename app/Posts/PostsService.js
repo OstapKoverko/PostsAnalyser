@@ -1,12 +1,12 @@
 app.service('PostsService', function($http) { 
 	this.getPosts = function (callback) {
 		// USE STANDART CALLBACK
-		$http.get("https://jsonplaceholder.typicode.com/posts/999").then(
+		$http.get("https://jsonplaceholder.typicode.com/posts").then(
 			function (response) {
-				callback(response.status, response.data);  
+				callback(false, response.data);  
 			} ,
 			function (response) {
-				callback("GetPosts method's status: " + response.status + " " + response.statusText, null);	    
+				callback("GetPosts method's status: " + response.status + " " + response.statusText, false);	    
 			}
 		);
 	};	
