@@ -6,7 +6,16 @@
 		<th> Body </th>
 	</tr>
 	<tr ng-repeat="post in posts">
-		<td><a href="#posts/{{ post.id }}"> {{ post.id }} </a> </td>
+		
+		<!-- ід-шка є а лінку немає. А мав би бути!-->
+		<!--<a ng-href="#posts/{{ post.id }}"> <td ng-bind="post.id"> </td>	</a> -->
+		
+		<!--І так теж лінку немає:-->
+		<!--<td ng-bind="post.id"> <a ng-href="#posts/{{ post.id }}"> </a> </td>-->
+		
+		<!--Мусів залишити покищо так, бо іншого варіанту поки не придумав :(-->
+		<td> <a ng-href="#posts/{{ post.id }}"> {{ post.id }} </a> </td>
+		
 		<td ng-bind="post.userId"> </td>
 		<td ng-bind="post.title"> </td>
 		<td ng-bind="post.body"> </td>

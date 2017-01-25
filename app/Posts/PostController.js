@@ -1,21 +1,16 @@
 app.controller('postController', function($scope, $routeParams, PostsService){
-  PostsService.getPostById(
-    $routeParams.id,
-    function getPostById(result){
-      $scope.post = result;
-    },
-    function printError(result){
-      console.log(result);  
-    }
-  ); 
-  PostsService.getCommentsByPostId(
-    $routeParams.id, 
-    function getCommentsByPostId(result){
-      $scope.comments = result;
-      console.log("PostId: " + $routeParams.id);
-    },
-    function printError(result){
-      console.log(result);  
-    }
-  );
+	// USE PROMISES
+	PostsService.getPostById($routeParams.id).then(
+		function onSuccess(response) {
+			$scope.post = response.data;
+		}, function onError(response) {
+			console.log("GetPostById method's status: " + response.status + " " + response.statusText);
+		});
+	PostsService.getCommentsByPostId($routeParams.id).then(
+		function onSuccess(response) {
+			$scope.comments = response.data;
+		},
+		function onError(response) {
+			console.log("GetCommentsByPostId method's status: " + response.status + " " + response.statusText);
+		});
 });
