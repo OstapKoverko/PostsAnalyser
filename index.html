@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Angular</title>
+	<meta charset="utf-8">
+	<title>Angular</title>
+	
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.js" integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA=" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" type="text/css" href="css/index.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-  <script type="text/javascript" src="app/Posts/app.js"></script>    
-  <script type="text/javascript" src="app/Posts/PostsService.js"></script>
-  <script type="text/javascript" src="app/Posts/PostsController.js"></script>
-  <script type="text/javascript" src="app/Posts/PostController.js"></script>
-  
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+	<script type="text/javascript" src="app/Posts/app.js"></script>    
+	<script type="text/javascript" src="app/Posts/PostsService.js"></script>
+	<script type="text/javascript" src="app/Posts/PostsController.js"></script>
+	<script type="text/javascript" src="app/Posts/PostController.js"></script>
+	
 </head>
 <body>
-  <div ng-app="myApp">
-    <!-- <pre>{{postById | json}}</pre> -->
-    <p><a href="#posts">Posts list</a></p>
-    <div ng-view></div>    
-  </div>  
+	<div ng-app="myApp">
+		<div class="container">
+			<div class="row">	
+				<div class="col-md-8">
+					<h1>Posts analyzer v.3.0</h1>
+				</div>	
+				<div class="col-md-4">
+					<ul class="nav nav-pills">
+						<li role="presentation" id="pill-1" class="active"><a href="#posts">Get posts list</a></li>
+
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div ng-view></div>   
+				</div>
+			</div>
+		</div>
+	</div>  
 </body>
 </html>
+
+
+	<!-- <pre>{{postById | json}}</pre> -->
+	<!--<p><a href="#posts">Posts list</a></p>-->
