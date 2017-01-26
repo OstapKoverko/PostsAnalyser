@@ -1,21 +1,64 @@
-<form>
-	<h3>Post by id</h3>
-	<table id="post-table">
-		<tr>
-			<th> Id </th>
-			<th> User id </th>
-			<th> Title </th>
-			<th> Body </th>
-		</tr>
-		<tr>
-			<td ng-bind="post.id"> </td>
-			<td ng-bind="post.userId"> </td>
-			<td ng-bind="post.title"> </td>
-			<td ng-bind="post.body"> </td>
-		</tr>
-	</table>
-	<div ng-bind="postErr" id="post-err" class="alert alert-danger" role="alert"></div>
+<h3>Post by id</h3>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Id</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" ng-model="post.id">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">User id</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword3" ng-model="post.userId">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword3" ng-model="post.title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Body</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword3" ng-model="post.body">
+    </div>
+  </div>
+  <!--<div class="form-group">-->
+  <!--  <div class="col-sm-offset-2 col-sm-10">-->
+  <!--    <div class="checkbox">-->
+  <!--      <label>-->
+  <!--        <input type="checkbox"> Remember me-->
+  <!--      </label>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+  <!--  <div class="col-sm-offset-2 col-sm-10">-->
+  <!--    <button type="submit" class="btn btn-default">Edit</button>-->
+  <!--  </div>-->
+  <!--</div>-->
 </form>
+
+
+<!--<form>-->
+<!--	<h3>Post by id</h3>-->
+<!--	<table id="post-table">-->
+<!--		<tr>-->
+<!--			<th> Id </th>-->
+<!--			<th> User id </th>-->
+<!--			<th> Title </th>-->
+<!--			<th> Body </th>-->
+<!--		</tr>-->
+<!--		<tr>-->
+<!--			<td ng-bind="post.id"> </td>-->
+<!--			<td ng-bind="post.userId"> </td>-->
+<!--			<td ng-bind="post.title"> </td>-->
+<!--			<td ng-bind="post.body"> </td>-->
+<!--		</tr>-->
+<!--	</table>-->
+<!--	<div ng-bind="postErr" id="post-err" class="alert alert-danger" role="alert"></div>-->
+<!--</form>-->
 
 
 
