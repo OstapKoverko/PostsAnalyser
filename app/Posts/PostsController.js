@@ -4,8 +4,8 @@ app.controller('postsController', function($scope, PostsService) {
 		if (err) {
 			console.log(err);
 			$scope.err = err;
-			document.getElementById('table').style.display = "none";
-			document.getElementById('err').style.display = "block";
+			document.getElementById('posts-table').style.display = "none";
+			document.getElementById('posts-err').style.display = "block";
 			return;
 		}
 			$scope.posts = result;

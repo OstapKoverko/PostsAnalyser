@@ -1,6 +1,6 @@
 <form>
-<h3>Post by id</h3>
-	<table>
+	<h3>Post by id</h3>
+	<table id="post-table">
 		<tr>
 			<th> Id </th>
 			<th> User id </th>
@@ -13,8 +13,11 @@
 			<td ng-bind="post.title"> </td>
 			<td ng-bind="post.body"> </td>
 		</tr>
-	</table>	
+	</table>
+	<div ng-bind="postErr" id="post-err" class="alert alert-danger" role="alert"></div>
 </form>
+
+
 
 <br>
 <br>
@@ -22,7 +25,7 @@
 
 <h3>Comments by post id</h3>
 
-<table>
+<table id="comments-table">
 	<tr>
 		<th> Id </th>
 		<th> Post id </th>
@@ -38,3 +41,4 @@
 		<td ng-bind="comment.body"> </td>
 	</tr>
 </table> 
+<div ng-bind="commentsErr" id="comments-err" class="alert alert-danger" role="alert"></div>

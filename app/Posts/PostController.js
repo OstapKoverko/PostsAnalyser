@@ -5,6 +5,9 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 			$scope.post = response.data;
 		}, function onError(response) {
 			console.log("GetPostById method's status: " + response.status + " " + response.statusText);
+			$scope.postErr = "GetPostById method's status: " + response.status + " " + response.statusText;
+			document.getElementById('post-table').style.display = "none";
+			document.getElementById('post-err').style.display = "block";
 		}
 	);
 	PostsService.getCommentsByPostId($routeParams.id).then(
@@ -13,6 +16,9 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 		},
 		function onError(response) {
 			console.log("GetCommentsByPostId method's status: " + response.status + " " + response.statusText);
+			$scope.commentsErr = "GetCommentsByPostId method's status: " + response.status + " " + response.statusText;
+			document.getElementById('comments-table').style.display = "none";
+			document.getElementById('comments-err').style.display = "block";
 		}
 	);
 });
