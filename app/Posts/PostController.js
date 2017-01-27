@@ -21,4 +21,11 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 			document.getElementById('comments-err').style.display = "block";
 		}
 	);
+	$scope.edit = true;
+	$scope.editPost = function () {
+		$scope.edit = false;
+	};
+	$scope.cancelEditPost = function () {
+		$scope.edit = true;
+	};
 });
