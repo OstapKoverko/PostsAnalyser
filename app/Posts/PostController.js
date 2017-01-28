@@ -21,11 +21,18 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 			document.getElementById('comments-err').style.display = "block";
 		}
 	);
-	$scope.edit = true;
+	$scope.fieldblock = true;
+	$scope.showEdit = true;
 	$scope.editPost = function () {
-		$scope.edit = false;
+		$scope.fieldblock = false;
+		$scope.showEdit = false;
+		$scope.showCancel = true;
+		$scope.showSave = true;
 	};
 	$scope.cancelEditPost = function () {
-		$scope.edit = true;
+		$scope.fieldblock = true;
+		$scope.showEdit = true;
+		$scope.showCancel = false;
+		$scope.showSave = false;
 	};
 });

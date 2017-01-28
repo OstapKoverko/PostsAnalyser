@@ -1,63 +1,30 @@
-<h3>Post by id</h3>
+<h3> Post <span ng-bind="post.id"> </span> </h3>
 <form class="form-horizontal" >
 	<div class="form-group">
 		<label for="inputPassword3" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="edit">
+			<input type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="fieldblock">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputPassword3" class="col-sm-2 control-label">Memo</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="edit">
+			<input type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="fieldblock">
 		</div>
 	</div>
-	<!--<div class="form-group">-->
-	<!--  <div class="col-sm-offset-2 col-sm-10">-->
-	<!--    <div class="checkbox">-->
-	<!--      <label>-->
-	<!--        <input type="checkbox"> Remember me-->
-	<!--      </label>-->
-	<!--    </div>-->
-	<!--  </div>-->
-	<!--</div>-->
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button ng-click="editPost()" type="button" class="btn btn-default">Edit</button>
-			<button ng-click="cancelEditPost()" type="button" class="btn btn-default">Cancel</button>
-			<button type="submit" class="btn btn-default">Save</button>
+			<button type="button" ng-click="editPost()" ng-show="showEdit" class="btn btn-default">Edit</button>
+			<button type="button" ng-click="cancelEditPost()" ng-model="showCancel" ng-show="showCancel" class="btn btn-default">Cancel</button>
+			<button type="submit" ng-click="savePost()" ng-model="showSave" ng-show="showSave" class="btn btn-default">Save</button>
 		</div>
 	</div>
 </form>
-
-
-<!--<form>-->
-<!--	<h3>Post by id</h3>-->
-<!--	<table id="post-table">-->
-<!--		<tr>-->
-<!--			<th> Id </th>-->
-<!--			<th> User id </th>-->
-<!--			<th> Title </th>-->
-<!--			<th> Body </th>-->
-<!--		</tr>-->
-<!--		<tr>-->
-<!--			<td ng-bind="post.id"> </td>-->
-<!--			<td ng-bind="post.userId"> </td>-->
-<!--			<td ng-bind="post.title"> </td>-->
-<!--			<td ng-bind="post.body"> </td>-->
-<!--		</tr>-->
-<!--	</table>-->
-<!--	<div ng-bind="postErr" id="post-err" class="alert alert-danger" role="alert"></div>-->
-<!--</form>-->
-
-
-
+<div ng-bind="postErr" id="post-err" class="alert alert-danger" role="alert"></div>
 <br>
 <br>
 <br>
-
-<h3>Comments by post id</h3>
-
+<h3>Comments</h3>
 <table class="table table-bordered table-hover" id="comments-table">
 	<tr>
 		<th> Id </th>
