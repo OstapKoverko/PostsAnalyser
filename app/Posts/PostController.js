@@ -8,7 +8,6 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 			console.log("GetPostById method's status: " + response.status + " " + response.statusText);
 			$scope.postErr = "GetPostById method's status: " + response.status + " " + response.statusText;
 			$scope.postErrShow = true;
-document.getElementById('post-err').style.display = "block";
 		}
 	);
 	PostsService.getCommentsByPostId($routeParams.id).then(
