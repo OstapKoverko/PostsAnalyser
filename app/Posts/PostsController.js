@@ -3,11 +3,11 @@ app.controller('postsController', function($scope, PostsService) {
 	PostsService.getPosts(function (err, result) {
 		if (err) {
 			console.log(err);
-			$scope.err = err;
-			document.getElementById('posts-table').style.display = "none";
-			document.getElementById('posts-err').style.display = "block";
+			$scope.postsErr = err;
+			$scope.postsErrShow = true;
 			return;
 		}
 			$scope.posts = result;
+			$scope.postsShow = true;
 	});  
 });
