@@ -1,36 +1,39 @@
 <h3> Post <span ng-bind="post.id"> </span> </h3>
-<form class="form-horizontal" ng-show="postShow">
+<form class="form-horizontal" ng-if="!postError">
+<!--<form class="form-horizontal" ng-show="postShow">-->
 	<div class="form-group">
 		<label for="inputPassword3" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="formUnEditable" required>
+			<input type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="!formEditable" required>
 			<!--<input type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="uneditable" required>-->
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputPassword3" class="col-sm-2 control-label">Memo</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="formUnEditable" required>
+			<input type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="!formEditable" required>
 			<!--<input type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="uneditable" required>-->
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="button" ng-click="editPost()" ng-show="formUnEditable" class="btn btn-default">Edit</button>
-			<button type="button" ng-click="cancelEditPost()" ng-hide="formUnEditable" class="btn btn-default">Cancel</button>
-			<button type="submit" ng-click="savePost()" ng-hide="formUnEditable" class="btn btn-default">Save</button>
+			<button type="button" ng-click="editPost()" ng-if="!formEditable" class="btn btn-default">Edit</button>
+			<button type="button" ng-click="cancelEditPost()" ng-if="formEditable" class="btn btn-default">Cancel</button>
+			<button type="submit" ng-click="savePost()" ng-if="formEditable" class="btn btn-default">Save</button>
 			<!--<button type="button" ng-click="editPost()" ng-show="uneditable" class="btn btn-default">Edit</button>-->
 			<!--<button type="button" ng-click="cancelEditPost()" ng-show="editable" class="btn btn-default">Cancel</button>-->
 			<!--<button type="submit" ng-click="savePost()" ng-show="editable" class="btn btn-default">Save</button>-->
 		</div>
 	</div>
 </form>
-<div ng-bind="postErr" ng-show="postErrShow" class="alert alert-danger" role="alert"></div>
+<div ng-bind="postErrorMessage" ng-if="postError" class="alert alert-danger" role="alert"></div>
+<!--<div ng-bind="postErrorMessage" ng-show="postErrShow" class="alert alert-danger" role="alert"></div>-->
 <br>
 <br>
 <br>
 <h3>Comments</h3>
-<table class="table table-bordered table-hover" ng-show="commentsShow">
+<table class="table table-bordered table-hover" ng-if="!commentsError">
+<!--<table class="table table-bordered table-hover" ng-show="commentsShow">-->
 	<tr>
 		<th> Id </th>
 		<th> Post id </th>
@@ -46,4 +49,5 @@
 		<td ng-bind="comment.body"> </td>
 	</tr>
 </table> 
-<div ng-bind="commentsErr" ng-show="commentsErrShow" class="alert alert-danger" role="alert"></div>
+<div ng-bind="commentsErrorMessage" ng-if="commentsError" class="alert alert-danger" role="alert"></div>
+<!--<div ng-bind="commentsErrorMessage" ng-show="commentsErrShow" class="alert alert-danger" role="alert"></div>-->

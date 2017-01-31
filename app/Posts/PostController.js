@@ -3,30 +3,34 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 	PostsService.getPostById($routeParams.id).then(
 		function onSuccess(response) {
 			$scope.post = response.data;
-			$scope.postShow = true;
+			$scope.postError = null;
+			// $scope.postShow = true;
 		}, function onError(response) {
 			console.log("GetPostById method's status: " + response.status + " " + response.statusText);
-			$scope.postErr = "GetPostById method's status: " + response.status + " " + response.statusText;
-			$scope.postErrShow = true;
+			$scope.postErrorMessage = "GetPostById method's status: " + response.status + " " + response.statusText;
+			// $scope.postErrShow = true;
+			$scope.postError = true;
 		}
 	);
 	PostsService.getCommentsByPostId($routeParams.id).then(
 		function onSuccess(response) {
 			$scope.comments = response.data;
-			$scope.commentsShow = true;
+			// $scope.commentsShow = true;
+			$scope.commentsError = null;
 		},
 		function onError(response) {
 			console.log("GetCommentsByPostId method's status: " + response.status + " " + response.statusText);
-			$scope.commentsErr = "GetCommentsByPostId method's status: " + response.status + " " + response.statusText;
-			$scope.commentsErrShow = true;
+			$scope.commentsErrorMessage = "GetCommentsByPostId method's status: " + response.status + " " + response.statusText;
+			// $scope.commentsErrShow = true;
+			$scope.commentsError = true;
 		}
 	);
-	$scope.formUnEditable = true;
+	$scope.formEditable = false;
 	$scope.editPost = function () {
-		$scope.formUnEditable = false;
+		$scope.formEditable = true;
 	};
 	$scope.cancelEditPost = function () {
-		$scope.formUnEditable = true;
+		$scope.formEditable = false;
 	};
 	// 	$scope.uneditable = true;
 	// $scope.editPost = function () {
