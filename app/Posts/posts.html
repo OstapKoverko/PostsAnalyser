@@ -1,4 +1,5 @@
-<table class="table table-bordered table-hover" ng-show="postsShow">
+<table class="table table-bordered table-hover" ng-if="!postsError">
+<!--<table class="table table-bordered table-hover" ng-show="postsShow">-->
 	<tr>
 		<th> Id </th>
 		<th> User id </th>
@@ -12,5 +13,5 @@
 		<td ng-bind="post.body"> </td>
 	</tr>
 </table>
-
-<div ng-bind="postsErr" ng-show="postsErrShow" class="alert alert-danger" role="alert"></div>
+<div ng-bind="postsErrorMesage" ng-if="postsError" class="alert alert-danger" role="alert"></div>
+<!--<div ng-bind="postsErr" ng-show="postsErrShow" class="alert alert-danger" role="alert"></div>-->
