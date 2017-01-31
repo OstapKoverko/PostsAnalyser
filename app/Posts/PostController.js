@@ -21,13 +21,20 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 			$scope.commentsErrShow = true;
 		}
 	);
-	$scope.uneditable = true;
+	$scope.formUnEditable = true;
 	$scope.editPost = function () {
-		$scope.editable = true;
-		$scope.uneditable =false;
+		$scope.formUnEditable = false;
 	};
 	$scope.cancelEditPost = function () {
-		$scope.editable = false;
-		$scope.uneditable = true;
+		$scope.formUnEditable = true;
 	};
+	// 	$scope.uneditable = true;
+	// $scope.editPost = function () {
+	// 	$scope.editable = true;
+	// 	$scope.uneditable =false;
+	// };
+	// $scope.cancelEditPost = function () {
+	// 	$scope.editable = false;
+	// 	$scope.uneditable = true;
+	// };
 });
