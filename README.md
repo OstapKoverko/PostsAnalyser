@@ -1,4 +1,4 @@
-Posts analyser v.4.7
+Posts analyser v.4.8
 
 My first project on AngularJS with AJAX use
 
