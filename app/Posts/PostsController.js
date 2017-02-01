@@ -4,12 +4,9 @@ app.controller('postsController', function($scope, PostsService) {
 		if (err) {
 			console.log(err);
 			$scope.postsErrorMesage = err;
-			$scope.postsError = true;
-			// $scope.postsErrShow = true;
 			return;
 		}
 			$scope.posts = result;
-			$scope.postsError = null;
-			// $scope.postsShow = true;
+			$scope.postsErrorMesage = null;
 	});  
 });

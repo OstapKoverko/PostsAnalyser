@@ -3,26 +3,20 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 	PostsService.getPostById($routeParams.id).then(
 		function onSuccess(response) {
 			$scope.post = response.data;
-			$scope.postError = null;
-			// $scope.postShow = true;
+			$scope.postErrorMessage = null;
 		}, function onError(response) {
 			console.log("GetPostById method's status: " + response.status + " " + response.statusText);
 			$scope.postErrorMessage = "GetPostById method's status: " + response.status + " " + response.statusText;
-			// $scope.postErrShow = true;
-			$scope.postError = true;
 		}
 	);
 	PostsService.getCommentsByPostId($routeParams.id).then(
 		function onSuccess(response) {
 			$scope.comments = response.data;
-			// $scope.commentsShow = true;
-			$scope.commentsError = null;
+			$scope.commentsErrorMessage = null;
 		},
 		function onError(response) {
 			console.log("GetCommentsByPostId method's status: " + response.status + " " + response.statusText);
 			$scope.commentsErrorMessage = "GetCommentsByPostId method's status: " + response.status + " " + response.statusText;
-			// $scope.commentsErrShow = true;
-			$scope.commentsError = true;
 		}
 	);
 	$scope.formEditable = false;
@@ -32,13 +26,21 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 	$scope.cancelEditPost = function () {
 		$scope.formEditable = false;
 	};
-	// 	$scope.uneditable = true;
-	// $scope.editPost = function () {
-	// 	$scope.editable = true;
-	// 	$scope.uneditable =false;
-	// };
-	// $scope.cancelEditPost = function () {
-	// 	$scope.editable = false;
-	// 	$scope.uneditable = true;
-	// };
+	$scope.savePost = function () {
+		$scope.data = {
+			id: $scope.post.id,
+			userId: $scope.post.userId,
+			title: $scope.post.title,
+			body: $scope.post.body
+		};
+		console.log("$scope.savePost - done!");
+		console.log($scope.data);
+		PostsService.postPostById($scope.data).then(
+			function onSuccess(response) {
+				console.log(response);
+			}, function onError(response) {
+				console.log(response);
+			}
+		);
+	};
 });
