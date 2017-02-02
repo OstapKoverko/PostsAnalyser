@@ -14,9 +14,8 @@ app.service('PostsService', function($http) {
 	this.getPostById = function (id) {
 		return $http.get("https://jsonplaceholder.typicode.com/posts/" + id);
 	};
-	this.postPostById = function (data) {
-		console.log("$http.get - done!");
-		return $http.get("https://jsonplaceholder.typicode.com/posts/", data);
+	this.savePost = function (id, data) {
+		return $http.put("https://jsonplaceholder.typicode.com/posts/" + id, data);
 	};
 	this.getCommentsByPostId = function (postId) {
 		return $http.get("https://jsonplaceholder.typicode.com/posts/" + postId + "/comments");

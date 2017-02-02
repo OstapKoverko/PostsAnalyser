@@ -1,23 +1,23 @@
 <h3> Post <span ng-bind="post.id"> </span> </h3>
-<form name="postForm" class="form-horizontal" ng-submit="savePost()" ng-if="!postErrorMessage">
+<form name="postForm" class="form-horizontal" ng-submit="savePost(postForm)" ng-if="!postErrorMessage">
 	<div class="form-group">
-		<label for="inputPassword3" class="col-sm-2 control-label">
+		<label class="col-sm-2 control-label">
 			<span>Title</span>
 			<span class="glyphicon glyphicon-asterisk" ng-if="formEditable"></span>
 		</label>
 		<div class="col-sm-10">
 			<input name="title" type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="!formEditable" required>
-			<span ng-if="postForm.title.$invalid">The title is required.</span>
+			<span ng-if="postForm.title.$invalid" class="help-block">The title is required.</span>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputPassword3" class="col-sm-2 control-label">
+		<label class="col-sm-2 control-label">
 			<span>Memo</span>
 			<span class="glyphicon glyphicon-asterisk" ng-if="formEditable"></span>
 		</label>
 		<div class="col-sm-10">
 			<input name="memo" type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="!formEditable" required>
-			<span ng-if="postForm.memo.$invalid">The memo is required.</span>
+			<span ng-if="postForm.memo.$invalid" class="help-block">The memo is required.</span>
 		</div>
 	</div>
 	<div class="form-group">
