@@ -1,9 +1,9 @@
 app.service('PostsService', function($http) { 
 	// USE STANDART CALLBACK
-	this.getPosts = function (callback) {
+	this.getPosts = function (pageSize, pageNumber, callback) {
 		$http.get("https://jsonplaceholder.typicode.com/posts").then(
 			function (response) {
-				callback(null, response.data);  
+				callback(null, response.data.splice((pageNumber * pageSize) - pageSize, pageSize));  
 			} ,
 			function (response) {
 				callback("GetPosts method's status: " + response.status + " " + response.statusText);	    

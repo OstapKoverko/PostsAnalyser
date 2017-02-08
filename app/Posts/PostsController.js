@@ -3,28 +3,26 @@ app.controller('postsController', function($scope, PostsService) {
 	// Прописав тут значення змінних, бо вже п'ятий день не можу отримати дані із posts.html
 	// А коли прибираю це присвоєння, то змінні = undefine  
 	$scope.pageSize = 10;
-	$scope.pageNumber = 2;
+	$scope.pageNumber = 3;
 	
 	
 	// USE STANDART CALLBACK
-	PostsService.getPosts(function (err, result) {
+	PostsService.getPosts($scope.pageSize, $scope.pageNumber, function (err, result) {
 		if (err) {
 			console.log(err);
 			$scope.postsErrorMesage = err;
 			return;
 		}
 			$scope.postsErrorMesage = null;
+			$scope.posts = result;
+	
 			
 			// Створюємо масив з номерами сторінок
 			$scope.pages = [];
-			for (var i = 1; i <= result.length / $scope.pageSize; i++) {
+			for (var i = 1; i <= result.length / $scope.applpageSize; i++) {
 				$scope.pages.push(i); 
 			}
 
-			// Вирізаємо потрібний фрагмент даних 
-			$scope.posts = result.splice(
-				($scope.pageNumber * $scope.pageSize) - $scope.pageSize, $scope.pageSize
-			);
 	});	
 
 	console.log("pageSize = " + $scope.pageSize);
