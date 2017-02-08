@@ -2,20 +2,17 @@
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Posts per page:
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li> <a ng-href="#posts" ng-click="postsPerPage = 10"> 10 </a> </li>
-      <li> <a ng-href="#posts" ng-click="postsPerPage = 20"> 20 </a> </li>
-      <li> <a ng-href="#posts" ng-click="postsPerPage = 50"> 50 </a> </li>
+      <li> <a ng-href="" ng-click="pageSize = 10" > 10 </a> </li>
+      <li> <a ng-href="" ng-click="pageSize = 20" > 20 </a> </li>
+      <li> <a ng-href="" ng-click="pageSize = 50" > 50 </a> </li>
     </ul>
   </div>
-<p ng-bind="postsPerPage"></p>
-
 
 <nav aria-label="Page navigation">
-  <ul class="pagination" ng-repeat="n in pages">
-    <li><a href="#" ng-bind="n"></a></li>
+  <ul class="pagination" ng-repeat="page in pages">
+    <li><a href="" ng-click="pageNumber = page" ng-bind="page"></a></li>
   </ul>
 </nav>
-
 
 <table class="table table-bordered table-hover" ng-if="!postsErrorMesage">
 	<tr>
@@ -25,8 +22,6 @@
 		<th> Body </th>
 	</tr>
 	<tr ng-repeat="post in posts">
-		<!--<tr ng-if="post.id == pages" ng-repeat="post in posts">-->
-		<!--<tr ng-repeat="post in posts | filter: postsQuantity">-->
 		<td> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>
 		<td ng-bind="post.userId"> </td>
 		<td ng-bind="post.title"> </td>

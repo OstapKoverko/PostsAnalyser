@@ -1,7 +1,7 @@
 app.service('PostsService', function($http) { 
 	// USE STANDART CALLBACK
 	this.getPosts = function (callback) {
-		$http.get("https://jsonplaceholder.typicode.com/posts/").then(
+		$http.get("https://jsonplaceholder.typicode.com/posts").then(
 			function (response) {
 				callback(null, response.data);  
 			} ,

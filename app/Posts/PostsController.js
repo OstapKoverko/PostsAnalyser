@@ -1,6 +1,10 @@
 app.controller('postsController', function($scope, PostsService) {
-	$scope.postsPerPage = 10;
-
+	
+	// Прописав тут значення змінних, бо вже п'ятий день не можу отримати дані із posts.html
+	// А коли прибираю це присвоєння, то змінні = undefine  
+	$scope.pageSize = 10;
+	$scope.pageNumber = 2;
+	
 	
 	// USE STANDART CALLBACK
 	PostsService.getPosts(function (err, result) {
@@ -9,14 +13,82 @@ app.controller('postsController', function($scope, PostsService) {
 			$scope.postsErrorMesage = err;
 			return;
 		}
-			$scope.posts = result;
 			$scope.postsErrorMesage = null;
-			$scope.pagesQuantity = result.length / $scope.postsPerPage;
+			
+			// Створюємо масив з номерами сторінок
 			$scope.pages = [];
-			for (var i = 1; i <= $scope.pagesQuantity; i++) {
+			for (var i = 1; i <= result.length / $scope.pageSize; i++) {
 				$scope.pages.push(i); 
 			}
-			console.log("pagesQuantity = " + $scope.pagesQuantity);
-			console.log("$scope.pages = " + $scope.pages);
-	});
+
+			// Вирізаємо потрібний фрагмент даних 
+			$scope.posts = result.splice(
+				($scope.pageNumber * $scope.pageSize) - $scope.pageSize, $scope.pageSize
+			);
+	});	
+
+	console.log("pageSize = " + $scope.pageSize);
+	console.log("pageNumber = " + $scope.pageNumber);
+	console.log("$scope.pages = " + $scope.pages);
+
 });
+
+	/////////////////////////////
+	// 2017.02.07  3:44 AM (!) //   
+	/////////////////////////////
+	
+	// // var pageNumber =2;
+	// var lastId;
+	// var firstId;
+	
+	
+
+	// $scope.setPageSize = function (pageSize) {
+	// 	console.log("pageSize = " + pageSize);
+	// 	$scope.createPages(pageSize);
+	// 	$scope.spliceAllPosts(0);
+	// 	pageSize = 0;
+	// };	
+
+	// $scope.setPageNumber = function(pageNumber) {
+	// 	console.log("pageNumber = " + pageNumber);
+	// 	lastId = $scope.pageSize * pageNumber;
+ //   firstId = lastId - ($scope.pageSize - 1);
+	// 	// $scope.posts = $scope.posts.splice($scope.firstId, pageSize);
+	// 	// console.log($scope.posts);
+	// 	$scope.spliceAllPosts(firstId);
+	// 	firstId = 0;
+	// 	lastId = 0;
+	// };
+	
+	
+	// // Створюємо масив з номерами сторінок
+	// $scope.createPages = function () {
+	// 	$scope.pages = [];
+	// 	for (var i = 1; i <= $scope.allPosts.length / $scope.pageSize ; i++) {
+	// 		$scope.pages.push(i); 
+	// 	}
+	// };
+		
+
+	// // Вирізаємо потрібний фрагмент даних 
+	// $scope.spliceAllPosts = function (firstId) {
+	// 	$scope.posts = $scope.allPosts.splice(firstId, $scope.pageSize);	
+	// };
+	
+	
+	// // USE STANDART CALLBACK
+	// PostsService.getPosts(function (err, result) {
+	// 	if (err) {
+	// 		console.log(err);
+	// 		$scope.postsErrorMesage = err;
+	// 		return;
+	// 	}
+	// 		$scope.postsErrorMesage = null;
+	// 		$scope.allPosts = result;
+	// 		$scope.createPages(10);
+	// 		$scope.spliceAllPosts(0);
+	// 		// // console.log("Begin getPosts from post id " + firstId + " to post id " + lastId);
+	// 		// console.log("pageSize = " + pageSize);
+	// 		// console.log("$scope.pages = " + $scope.pages);
+	// });
