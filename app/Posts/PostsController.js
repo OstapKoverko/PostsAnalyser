@@ -4,13 +4,16 @@ app.controller('postsController', function($scope, PostsService) {
 	// Прописав тут значення змінних, бо вже п'ятий день не можу отримати дані із posts.html
 	// А коли прибираю це присвоєння, то змінні = undefined 
 	$scope.pageSize = 10;
-	$scope.pageNumber = 2;
+	$scope.pageNumber = 1;
+	getPostsService();
 	
 	$scope.setPageSize = function (pageSize) {
-		console.log("-------------------");
-		console.log("OLD $scope.pageSize = " + $scope.pageSize);
 		$scope.pageSize = pageSize;
-		console.log("NEW $scope.pageSize = " + $scope.pageSize);
+		getPostsService();
+		// console.log("-------------------");
+		// console.log("OLD $scope.pageSize = " + $scope.pageSize);
+		// $scope.pageSize = pageSize;
+		// console.log("NEW $scope.pageSize = " + $scope.pageSize);
 		// angular.js:12520 Error: [$rootScope:inprog] 
 		// $scope.$apply();
 		// angular.js:12520 Error: [$rootScope:inprog] 
@@ -19,26 +22,28 @@ app.controller('postsController', function($scope, PostsService) {
 		// });
 	};
 	
+	$scope.setPageNumber = function (pageNumber) {
+		$scope.pageNumber = pageNumber;
+		getPostsService();
+	};
+	
 	// USE STANDART CALLBACK
-	PostsService.getPosts($scope.pageSize, $scope.pageNumber, function(postslength) {
-		// Створюємо масив з номерами сторінок
-		$scope.pages = [];
-		for (var i = 1; i <= postslength / $scope.pageSize; i++) {
-			$scope.pages.push(i); 
-		}
-		}, function(err, result) {
-		if (err) {
-			console.log(err);
-			$scope.postsErrorMesage = err;
-			return;
-		}
-			$scope.postsErrorMesage = null;
-			$scope.posts = result;
-
-			// // console.log("Begin getPosts from post id " + firstId + " to post id " + lastId);
-			// console.log("pageSize = " + pageSize);
-			// console.log("$scope.pages = " + $scope.pages);
-	});
+	function getPostsService () {
+		PostsService.getPosts($scope.pageSize, $scope.pageNumber, function(postslength) {
+			// Створюємо масив з номерами сторінок
+			$scope.pages = [];
+			for (var i = 1; i <= postslength / $scope.pageSize; i++) {
+				$scope.pages.push(i); 
+			}}, function(err, result) {
+			if (err) {
+				console.log(err);
+				$scope.postsErrorMesage = err;
+				return;
+			}
+				$scope.postsErrorMesage = null;
+				$scope.posts = result;
+		});
+	}
 
 	// PostsService.getPosts ().then(
 	// 	function onSuccess(response) {
