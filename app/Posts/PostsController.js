@@ -1,35 +1,48 @@
 app.controller('postsController', function($scope, PostsService) {
+	// USE PROMISES
 	
 	// Прописав тут значення змінних, бо вже п'ятий день не можу отримати дані із posts.html
-	// А коли прибираю це присвоєння, то змінні = undefine  
+	// А коли прибираю це присвоєння, то змінні = undefined 
 	$scope.pageSize = 10;
-	$scope.pageNumber = 3;
+	$scope.pageNumber = 2;
 	
+	$scope.setPageSize = function (pageSize) {
+		console.log("-------------------");
+		console.log("OLD $scope.pageSize = " + $scope.pageSize);
+		$scope.pageSize = pageSize;
+		console.log("NEW $scope.pageSize = " + $scope.pageSize);
+		
+		
+		// angular.js:12520 Error: [$rootScope:inprog] 
+		// $scope.$apply();
+		
+		// angular.js:12520 Error: [$rootScope:inprog] 
+		// $scope.$apply( function () {
+		// 	$scope.pageSize = pageSize;
+		// });
+	};
 	
-	// USE STANDART CALLBACK
-	PostsService.getPosts($scope.pageSize, $scope.pageNumber, function (err, result) {
-		if (err) {
-			console.log(err);
-			$scope.postsErrorMesage = err;
-			return;
-		}
+
+
+	PostsService.getPosts ().then(
+		function onSuccess(response) {
 			$scope.postsErrorMesage = null;
-			$scope.posts = result;
-	
-			
 			// Створюємо масив з номерами сторінок
 			$scope.pages = [];
-			for (var i = 1; i <= result.length / $scope.applpageSize; i++) {
+			for (var i = 1; i <= response.data.length / $scope.pageSize; i++) {
 				$scope.pages.push(i); 
 			}
-
-	});	
-
-	console.log("pageSize = " + $scope.pageSize);
-	console.log("pageNumber = " + $scope.pageNumber);
-	console.log("$scope.pages = " + $scope.pages);
-
+			// Вирізаємо потрібний кусень постів
+			$scope.posts = response.data.splice(($scope.pageNumber * $scope.ageSize) - $scope.pageSize, $scope.pageSize);
+			console.log("pageSize = " + $scope.pageSize);
+			console.log("pageNumber = " + $scope.pageNumber);
+			console.log("$scope.pages = " + $scope.pages);
+		}, function onError(response) {
+			$scope.postErrorMessage = ("GetPosts method's status: " + response.status + " " + response.statusText);
+		}	
+	);
 });
+
 
 	/////////////////////////////
 	// 2017.02.07  3:44 AM (!) //   
@@ -38,8 +51,6 @@ app.controller('postsController', function($scope, PostsService) {
 	// // var pageNumber =2;
 	// var lastId;
 	// var firstId;
-	
-	
 
 	// $scope.setPageSize = function (pageSize) {
 	// 	console.log("pageSize = " + pageSize);
