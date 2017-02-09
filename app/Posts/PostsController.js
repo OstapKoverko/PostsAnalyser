@@ -11,36 +11,54 @@ app.controller('postsController', function($scope, PostsService) {
 		console.log("OLD $scope.pageSize = " + $scope.pageSize);
 		$scope.pageSize = pageSize;
 		console.log("NEW $scope.pageSize = " + $scope.pageSize);
-		
-		
 		// angular.js:12520 Error: [$rootScope:inprog] 
 		// $scope.$apply();
-		
 		// angular.js:12520 Error: [$rootScope:inprog] 
 		// $scope.$apply( function () {
 		// 	$scope.pageSize = pageSize;
 		// });
 	};
 	
-
-
-	PostsService.getPosts ().then(
-		function onSuccess(response) {
+	// USE STANDART CALLBACK
+	PostsService.getPosts($scope.pageSize, $scope.pageNumber, function(postslength) {
+		// Створюємо масив з номерами сторінок
+		$scope.pages = [];
+		for (var i = 1; i <= postslength / $scope.pageSize; i++) {
+			$scope.pages.push(i); 
+		}
+		}, function(err, result) {
+		if (err) {
+			console.log(err);
+			$scope.postsErrorMesage = err;
+			return;
+		}
 			$scope.postsErrorMesage = null;
-			// Створюємо масив з номерами сторінок
-			$scope.pages = [];
-			for (var i = 1; i <= response.data.length / $scope.pageSize; i++) {
-				$scope.pages.push(i); 
-			}
-			// Вирізаємо потрібний кусень постів
-			$scope.posts = response.data.splice(($scope.pageNumber * $scope.ageSize) - $scope.pageSize, $scope.pageSize);
-			console.log("pageSize = " + $scope.pageSize);
-			console.log("pageNumber = " + $scope.pageNumber);
-			console.log("$scope.pages = " + $scope.pages);
-		}, function onError(response) {
-			$scope.postErrorMessage = ("GetPosts method's status: " + response.status + " " + response.statusText);
-		}	
-	);
+			$scope.posts = result;
+
+			// // console.log("Begin getPosts from post id " + firstId + " to post id " + lastId);
+			// console.log("pageSize = " + pageSize);
+			// console.log("$scope.pages = " + $scope.pages);
+	});
+
+	// PostsService.getPosts ().then(
+	// 	function onSuccess(response) {
+	// 		$scope.postsErrorMesage = null;
+	// 		// Створюємо масив з номерами сторінок
+	// 		$scope.pages = [];
+	// 		for (var i = 1; i <= response.data.length / $scope.pageSize; i++) {
+	// 			$scope.pages.push(i); 
+	// 		}
+	// 		// Вирізаємо потрібний кусень постів
+	// 		$scope.posts = response.data.splice(($scope.pageNumber * $scope.ageSize) - $scope.pageSize, $scope.pageSize);
+	// 		console.log("pageSize = " + $scope.pageSize);
+	// 		console.log("pageNumber = " + $scope.pageNumber);
+	// 		console.log("$scope.pages = " + $scope.pages);
+	// 	}, function onError(response) {
+	// 		$scope.postErrorMessage = ("GetPosts method's status: " + response.status + " " + response.statusText);
+	// 	}	
+	// );
+
+
 });
 
 
