@@ -1,27 +1,10 @@
 app.controller('postsController', function($scope, PostsService) {
-	// USE PROMISES
-	
-	// Прописав тут значення змінних, бо вже п'ятий день не можу отримати дані із posts.html
-	// А коли прибираю це присвоєння, то змінні = undefined 
 	$scope.pageSize = 10;
 	$scope.pageNumber = 1;
-	getPostsService();
-	
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		getPostsService();
-		// console.log("-------------------");
-		// console.log("OLD $scope.pageSize = " + $scope.pageSize);
-		// $scope.pageSize = pageSize;
-		// console.log("NEW $scope.pageSize = " + $scope.pageSize);
-		// angular.js:12520 Error: [$rootScope:inprog] 
-		// $scope.$apply();
-		// angular.js:12520 Error: [$rootScope:inprog] 
-		// $scope.$apply( function () {
-		// 	$scope.pageSize = pageSize;
-		// });
 	};
-	
 	$scope.setPageNumber = function (pageNumber) {
 		$scope.pageNumber = pageNumber;
 		getPostsService();
@@ -29,41 +12,31 @@ app.controller('postsController', function($scope, PostsService) {
 	
 	// USE STANDART CALLBACK
 	function getPostsService () {
-		PostsService.getPosts($scope.pageSize, $scope.pageNumber, function(postslength) {
-			// Створюємо масив з номерами сторінок
-			$scope.pages = [];
-			for (var i = 1; i <= postslength / $scope.pageSize; i++) {
-				$scope.pages.push(i); 
-			}}, function(err, result) {
-			if (err) {
-				console.log(err);
-				$scope.postsErrorMesage = err;
-				return;
-			}
+		PostsService.getPosts($scope.pageSize, $scope.pageNumber,
+			function(err, result) {
+				if (err) {
+					console.log(err);
+					$scope.postsErrorMesage = err;
+					return;
+				}
 				$scope.postsErrorMesage = null;
-				$scope.posts = result;
-		});
+				// $scope.pages = new Array(result.postslength / $scope.pageSize);
+				// console.log($scope.pages);
+				// Створюємо масив з номерами сторінок
+				var pages = [];
+				var i = 1;
+				var k = result.postslength / $scope.pageSize;
+				for (i; i <= k; i++) {
+					pages.push(i);
+				}
+				$scope.pages = pages;
+				$scope.posts = result.posts;
+				debugger;
+			}
+		);
 	}
 
-	// PostsService.getPosts ().then(
-	// 	function onSuccess(response) {
-	// 		$scope.postsErrorMesage = null;
-	// 		// Створюємо масив з номерами сторінок
-	// 		$scope.pages = [];
-	// 		for (var i = 1; i <= response.data.length / $scope.pageSize; i++) {
-	// 			$scope.pages.push(i); 
-	// 		}
-	// 		// Вирізаємо потрібний кусень постів
-	// 		$scope.posts = response.data.splice(($scope.pageNumber * $scope.ageSize) - $scope.pageSize, $scope.pageSize);
-	// 		console.log("pageSize = " + $scope.pageSize);
-	// 		console.log("pageNumber = " + $scope.pageNumber);
-	// 		console.log("$scope.pages = " + $scope.pages);
-	// 	}, function onError(response) {
-	// 		$scope.postErrorMessage = ("GetPosts method's status: " + response.status + " " + response.statusText);
-	// 	}	
-	// );
-
-
+	getPostsService();
 });
 
 
