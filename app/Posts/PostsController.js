@@ -20,8 +20,6 @@ app.controller('postsController', function($scope, PostsService) {
 					return;
 				}
 				$scope.postsErrorMesage = null;
-				// $scope.pages = new Array(result.postslength / $scope.pageSize);
-				// console.log($scope.pages);
 				// Створюємо масив з номерами сторінок
 				var pages = [];
 				var i = 1;
