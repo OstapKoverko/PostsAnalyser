@@ -1,5 +1,5 @@
 app.directive("pagination", function() {
     return {
-        template : "<h1>Made by a directive!</h1>"
+        templateUrl : "app/Pagination/_pagination.html"
     };
 });
