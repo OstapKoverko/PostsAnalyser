@@ -1,4 +1,4 @@
-app.controller('postsController', function($scope, PostsService) {
+app.controller('postsController', function($scope, PostsService, pagination) {
 	$scope.pageSize = 10;
 	$scope.pageNumber = 1;
 	$scope.setPageSize = function (pageSize) {
@@ -20,16 +20,26 @@ app.controller('postsController', function($scope, PostsService) {
 					return;
 				}
 				$scope.postsErrorMesage = null;
-				// Створюємо масив з номерами сторінок
-				var pages = [];
-				var i = 1;
-				var k = result.postslength / $scope.pageSize;
-				for (i; i <= k; i++) {
-					pages.push(i);
-				}
-				$scope.pages = pages;
 				$scope.posts = result.posts;
-				debugger;
+				
+				// Передача параметрів у директиву pagination
+				pagination(result.postslength, $scope.pageSize, $scope.pageNumber, function (pages) {
+					$scope.pages = pages;
+				});
+				
+				
+				
+				
+				
+				// // Створюємо масив з номерами сторінок
+				// var pages = [];
+				// var i = 1;
+				// var k = result.postslength / $scope.pageSize;
+				// for (i; i <= k; i++) {
+				// 	pages.push(i);
+				// }
+				// $scope.pages = pages;
+				// $scope.posts = result.posts;
 			}
 		);
 	}
