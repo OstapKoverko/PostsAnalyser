@@ -21,15 +21,9 @@ app.controller('postsController', function($scope, PostsService, pagination) {
 				}
 				$scope.postsErrorMesage = null;
 				$scope.posts = result.posts;
+				$scope.postsLength = result.postslength;
 				
-				// Передача параметрів у директиву pagination
-				pagination(result.postslength, $scope.pageSize, $scope.pageNumber, function (pages) {
-					$scope.pages = pages;
-				});
-				
-				
-				
-				
+	
 				
 				// // Створюємо масив з номерами сторінок
 				// var pages = [];
