@@ -27,9 +27,6 @@ app.directive("pagination", function() {
 				$scope.selectPage = function (currentPage) {
 					$scope.currentPage = currentPage;
 					$scope.onSelectPage(currentPage);
-					
-					// Дуже дивно чому не працює console.log та debugger? :((((
-					console.log(currentPage);
 					debugger;
 				};			
 			}
