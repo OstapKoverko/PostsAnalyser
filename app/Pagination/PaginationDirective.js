@@ -19,7 +19,6 @@ app.directive("pagination", function() {
 					pages.push(i);
 				}
 				$scope.pages = pages;
-				debugger;
 			}
 		]
 	};
