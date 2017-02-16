@@ -28,7 +28,11 @@
 				</tr>
 			</table>
 			
-			<!--<pagination total-items="100" items="10"></pagination>-->
+			 <!--Так працює! -->
+			<pagination total-items="100" items="pageSize"></pagination>
+			
+			<!--А так ні ((( -->
+			<!--<pagination total-items="postsLength" items="pageSize"></pagination>-->
 
 			<div ng-bind="postsErrorMesage" ng-if="postsErrorMesage" class="alert alert-danger" role="alert"></div>
 			

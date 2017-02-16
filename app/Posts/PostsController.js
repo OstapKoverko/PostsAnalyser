@@ -1,4 +1,4 @@
-app.controller('postsController', function($scope, PostsService, pagination) {
+app.controller('postsController', function($scope, PostsService) {
 	$scope.pageSize = 10;
 	$scope.pageNumber = 1;
 	$scope.setPageSize = function (pageSize) {
