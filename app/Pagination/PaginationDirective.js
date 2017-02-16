@@ -9,7 +9,7 @@ app.directive("pagination", function() {
 			currentPage: "=",
 			// onSelectPage: "$"
 		},
-		templateUrl: "app/Pagination/_pagination.html",
+		templateUrl: "app/Pagination/pagination.html",
 		controller: ["$scope",
 			function ($scope) {
 				var pages = [];
