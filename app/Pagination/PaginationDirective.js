@@ -4,8 +4,8 @@ app.directive("pagination", function() {
 		transclude: true,
 		// replace: true,
 		scope: {
-			items: "=",
-			totalItems: "=",
+			pageSize: "=",
+			postsQuantity: "=",
 			currentPage: "=",
 			// onSelectPage: "$"
 		},
@@ -14,11 +14,12 @@ app.directive("pagination", function() {
 			function ($scope) {
 				var pages = [];
 				var i = 1;
-				var k = $scope.totalItems / $scope.items;
+				var k = $scope.postsQuantity / $scope.pageSize;
 				for (i; i <= k; i++) {
 					pages.push(i);
 				}
 				$scope.pages = pages;
+				debugger;
 			}
 		]
 	};

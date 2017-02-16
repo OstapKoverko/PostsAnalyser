@@ -21,7 +21,7 @@ app.controller('postsController', function($scope, PostsService) {
 				}
 				$scope.postsErrorMesage = null;
 				$scope.posts = result.posts;
-				$scope.postsLength = result.postslength;
+				$scope.postsQuantity = result.postsQuantity;
 				
 	
 				
