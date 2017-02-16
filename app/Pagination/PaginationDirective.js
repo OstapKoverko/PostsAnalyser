@@ -12,14 +12,18 @@ app.directive("pagination", function() {
 		templateUrl: "app/Pagination/pagination.html",
 		controller: ["$scope",
 			function ($scope) {
-				var pages = [];
-				var i = 1;
-				var k = $scope.postsQuantity / $scope.pageSize;
-				for (i; i <= k; i++) {
-					pages.push(i);
-				}
-				$scope.pages = pages;
-				debugger;
+				$scope.$watch($scope.pageSize,
+					function refresh() {
+						var pages = [];
+						var i = 1;
+						var k = $scope.postsQuantity / $scope.pageSize;
+						for (i; i <= k; i++) {
+							pages.push(i);
+						}
+						$scope.pages = pages;
+						debugger;
+					}
+				);
 			}
 		]
 	};
