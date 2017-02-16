@@ -5,10 +5,14 @@ app.controller('postsController', function($scope, PostsService) {
 		$scope.pageSize = pageSize;
 		getPostsService();
 	};
-	$scope.setPageNumber = function (pageNumber) {
+	$scope.onSelectPage = function (pageNumber) {
 		$scope.pageNumber = pageNumber;
 		getPostsService();
 	};
+	// $scope.setPageNumber = function (pageNumber) {
+	// 	$scope.pageNumber = pageNumber;
+	// 	getPostsService();
+	// };
 	
 	// USE STANDART CALLBACK
 	function getPostsService () {
