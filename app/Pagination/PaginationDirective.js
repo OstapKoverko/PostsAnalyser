@@ -6,7 +6,6 @@ app.directive("pagination", function() {
 		scope: {
 			pageSize: "=",
 			postsQuantity: "=",
-			currentPage: "=",
 			onSelectPage: "&"
 		},
 		templateUrl: "app/Pagination/pagination.html",
@@ -17,12 +16,21 @@ app.directive("pagination", function() {
 						if(!pageSize)return;
 						var pages = [];
 						var i = $scope.postsQuantity / pageSize;
-						while (i > 0) {
+						while (i--) {
 							pages.unshift(i);
-							i--;
 						}
 						$scope.pages = pages;
 					}
+					// function refresh(pageSize) {
+					// 	if(!pageSize)return;
+					// 	var pages = [];
+					// 	var i = $scope.postsQuantity / pageSize;
+					// 	while (i > 0) {
+					// 		pages.unshift(i);
+					// 		i--;
+					// 	}
+					// 	$scope.pages = pages;
+					// }
 				);
 				$scope.selectPage = function (currentPage) {
 					$scope.currentPage = currentPage;
