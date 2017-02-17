@@ -16,10 +16,10 @@ app.directive("pagination", function() {
 					function refresh(pageSize) {
 						if(!pageSize)return;
 						var pages = [];
-						var i = 1;
-						var k = $scope.postsQuantity / pageSize;
-						for (i; i <= k; i++) {
-							pages.push(i);
+						var i = $scope.postsQuantity / pageSize;
+						while (i > 0) {
+							pages.unshift(i);
+							i--;
 						}
 						$scope.pages = pages;
 					}
@@ -27,7 +27,6 @@ app.directive("pagination", function() {
 				$scope.selectPage = function (currentPage) {
 					$scope.currentPage = currentPage;
 					$scope.onSelectPage(currentPage);
-					debugger;
 				};			
 			}
 		]
