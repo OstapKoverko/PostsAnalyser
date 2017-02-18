@@ -4,6 +4,7 @@
 
 			<div class="dropdown">
 		    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Posts per pages:
+		    	<span ng-bind="pageSize"></span>
 		    	<span class="caret"></span>
 		    </button>
 		    <ul class="dropdown-menu">
@@ -12,6 +13,7 @@
 		      <li> <a ng-href="" ng-click="setPageSize(50)"> 50 </a> </li>
 		    </ul>
 		  </div>
+			<br>
 			
 			<table class="table table-bordered table-hover" ng-if="!postsErrorMesage">
 				<tr>
@@ -28,12 +30,8 @@
 				</tr>
 			</table>
 			
-			<!--Так працює! -->
-			<pagination posts-quantity="100" page-size="pageSize" on-select-page="onSelectPage"></pagination>
+			<pagination posts-quantity="postsQuantity" page-size="pageSize" on-select-page="onSelectPage"></pagination>
 			
-			<!--А так ні ((( -->
-			<!--<pagination total-items="postsLength" items="pageSize"></pagination>-->
-
 			<div ng-bind="postsErrorMesage" ng-if="postsErrorMesage" class="alert alert-danger" role="alert"></div>
 			
 		</div>
