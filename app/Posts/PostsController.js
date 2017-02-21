@@ -1,8 +1,6 @@
 app.controller('postsController', function($scope, PostsService) {
+	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
-	$scope
-	// $scope.pageNumber = 1;
-
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		getPostsService();
@@ -11,7 +9,6 @@ app.controller('postsController', function($scope, PostsService) {
 		$scope.pageNumber = pageNumber;
 		getPostsService();
 	};
-		getPostsService();
 	// USE STANDART CALLBACK
 	function getPostsService () {
 		PostsService.getPosts($scope.pageSize, $scope.pageNumber,
@@ -24,7 +21,6 @@ app.controller('postsController', function($scope, PostsService) {
 				$scope.postsErrorMesage = null;
 				$scope.posts = result.posts;
 				$scope.postsQuantity = result.postsQuantity;
-				debugger;
 			}
 		);
 	}

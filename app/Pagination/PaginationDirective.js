@@ -1,6 +1,7 @@
 app.directive("pagination", function() {
 	return {
 		restrict: "E",
+		transclude: "true",
 		scope: {
 			pageSize: "=",
 			postsQuantity: "=",
@@ -9,16 +10,16 @@ app.directive("pagination", function() {
 		templateUrl: "app/Pagination/pagination.html",
 		controller: ["$scope",
 			function ($scope) {
-				$scope.$watch("pageSize",
-					function refresh(pageSize) {
+				$scope.$watchGroup(["postsQuantity", "pageSize"],
+					function refresh([postsQuantity, pageSize]) {
+						if(!postsQuantity)return;
 						if(!pageSize)return;
 						var pages = [];
-						var i = $scope.postsQuantity / pageSize;
+						var i = postsQuantity / pageSize;
 						while (i--) {
 							pages.unshift(i);
 						}
 						$scope.pages = pages;
-						debugger;
 					}
 				);
 				$scope.selectPage = function (currentPage) {
