@@ -27,7 +27,7 @@ app.controller('postsController', function($scope, PostsService) {
 	getPostsService();
 	
 
-	
+	    
 		
 	// Material Design Lite will automatically register and render all elements
 	// marked with MDL classes upon page load. However in the case where you are 

@@ -15,3 +15,4 @@ app.config(function($routeProvider) {
       controller : "postController"
     });  
 });
+    
