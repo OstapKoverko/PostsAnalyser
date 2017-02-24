@@ -1,31 +1,68 @@
 <div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--12-col">
-		<div class="mdl-shadow--4dp">
-			<div class="mdl-grid">
-				<div class="mdl-cell mdl-cell--1-col"> Id </div>
-				<div class="mdl-cell mdl-cell--1-col"> User id </div>
-				<div class="mdl-cell mdl-cell--3-col"> Title </div>
-				<div class="mdl-cell mdl-cell--7-col"> Body </div>
-				<hr> 
-			</div>
-			<div class="mdl-grid" ng-repeat="post in posts">
-				<div class="mdl-cell mdl-cell--1-col">
-					<a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a>
+		
+		<div class="mdl-card mdl-shadow--4dp" style="width: 100%">
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+		
+					<table class="table table-bordered table-hover" ng-if="!postsErrorMesage">
+						<tr>
+							<th> Id </th>
+							<th> User id </th>
+							<th> Title </th>
+							<th> Body </th>
+						</tr>
+						<tr ng-repeat="post in posts">
+							<td> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>
+							<td ng-bind="post.userId"> </td>
+							<td ng-bind="post.title"> </td>
+							<td ng-bind="post.body"> </td>
+						</tr>
+					</table>
+					
 				</div>
-				<div class="mdl-cell mdl-cell--1-col">
-					<span ng-bind="post.userId"> </span>
-				</div>
-				<div class="mdl-cell mdl-cell--3-col">
-					<span ng-bind="post.title"> </span>
-				</div>
-				<div class="mdl-cell mdl-cell--7-col">
-						<span ng-bind="post.body"> </span>
-				</div>
-				<hr>
 			</div>
 		</div>
+		</div>
+
 	</div>
-</div>
+</div> 
+
+
+
+<!-- ########### -->
+<!-- ### MDL ### -->
+<!-- ########### -->
+<!--<div class="mdl-grid">-->
+<!--	<div class="mdl-cell mdl-cell--12-col">-->
+<!--		<div class="mdl-shadow--4dp">-->
+<!--			<div class="mdl-grid">-->
+<!--				<div class="mdl-cell mdl-cell--1-col"> Id </div>-->
+<!--				<div class="mdl-cell mdl-cell--1-col"> User id </div>-->
+<!--				<div class="mdl-cell mdl-cell--3-col"> Title </div>-->
+<!--				<div class="mdl-cell mdl-cell--7-col"> Body </div>-->
+<!--				<hr> -->
+<!--			</div>-->
+<!--			<div class="mdl-grid" ng-repeat="post in posts">-->
+<!--				<div class="mdl-cell mdl-cell--1-col">-->
+<!--					<a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a>-->
+<!--				</div>-->
+<!--				<div class="mdl-cell mdl-cell--1-col">-->
+<!--					<span ng-bind="post.userId"> </span>-->
+<!--				</div>-->
+<!--				<div class="mdl-cell mdl-cell--3-col">-->
+<!--					<span ng-bind="post.title"> </span>-->
+<!--				</div>-->
+<!--				<div class="mdl-cell mdl-cell--7-col">-->
+<!--						<span ng-bind="post.body"> </span>-->
+<!--				</div>-->
+<!--				<hr>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
 		
 		<!-- TABLE -->
 		<!--<table class="mdl-data-table mdl-js-data-table">-->
