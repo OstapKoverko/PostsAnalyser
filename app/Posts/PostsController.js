@@ -1,7 +1,7 @@
 app.controller('postsController', function($scope, PostsService) {
+	$scope.loading = true;
 	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
-	
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		$scope.pageNumber = 1;
@@ -10,7 +10,6 @@ app.controller('postsController', function($scope, PostsService) {
 	$scope.onSelectPage = function (pageNumber) {
 		$scope.pageNumber = pageNumber;
 		getPostsService();
-		debugger;
 	};
 	// USE STANDART CALLBACK
 	function getPostsService () {
@@ -26,6 +25,7 @@ app.controller('postsController', function($scope, PostsService) {
 				$scope.postsQuantity = result.postsQuantity;
 				$scope.pageEnd = $scope.pageNumber * $scope.pageSize;
 				$scope.pageBegin = $scope.pageEnd - $scope.pageSize + 1;
+				$scope.loading = false;
 			}
 		);
 	}
