@@ -1,163 +1,74 @@
-<div class="mdl-grid">
-	<div class="mdl-cell mdl-cell--12-col">
-		
-		<div class="mdl-card mdl-shadow--4dp" style="width: 100%">
-		<br>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-		
-					<table class="table table-bordered table-hover" ng-if="!postsErrorMesage">
-						<tr>
-							<th> Id </th>
-							<th> User id </th>
-							<th> Title </th>
-							<th> Body </th>
-						</tr>
-						<tr ng-repeat="post in posts">
-							<td> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>
-							<td ng-bind="post.userId"> </td>
-							<td ng-bind="post.title"> </td>
-							<td ng-bind="post.body"> </td>
-						</tr>
-					</table>
-					
-				</div>
-			</div>
-		</div>
-		</div>
-
-	</div>
-</div> 
-
-
-
 <!-- ########### -->
 <!-- ### MDL ### -->
 <!-- ########### -->
-<!--<div class="mdl-grid">-->
-<!--	<div class="mdl-cell mdl-cell--12-col">-->
-<!--		<div class="mdl-shadow--4dp">-->
-<!--			<div class="mdl-grid">-->
-<!--				<div class="mdl-cell mdl-cell--1-col"> Id </div>-->
-<!--				<div class="mdl-cell mdl-cell--1-col"> User id </div>-->
-<!--				<div class="mdl-cell mdl-cell--3-col"> Title </div>-->
-<!--				<div class="mdl-cell mdl-cell--7-col"> Body </div>-->
-<!--				<hr> -->
-<!--			</div>-->
-<!--			<div class="mdl-grid" ng-repeat="post in posts">-->
-<!--				<div class="mdl-cell mdl-cell--1-col">-->
-<!--					<a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a>-->
-<!--				</div>-->
-<!--				<div class="mdl-cell mdl-cell--1-col">-->
-<!--					<span ng-bind="post.userId"> </span>-->
-<!--				</div>-->
-<!--				<div class="mdl-cell mdl-cell--3-col">-->
-<!--					<span ng-bind="post.title"> </span>-->
-<!--				</div>-->
-<!--				<div class="mdl-cell mdl-cell--7-col">-->
-<!--						<span ng-bind="post.body"> </span>-->
-<!--				</div>-->
-<!--				<hr>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--</div>-->
-		
-		<!-- TABLE -->
-		<!--<table class="mdl-data-table mdl-js-data-table">-->
-		<!--	<thead>-->
-		<!--		<tr>-->
-		<!--			<div class="mdl-grid">-->
-		<!--				<th class="mdl-cell mdl-cell--1-col mdl-data-table__cell--non-numeric"> Id </th>-->
-		<!--				<th class="mdl-cell mdl-cell--2-col mdl-data-table__cell--non-numeric"> User id </th>-->
-		<!--				<th class="mdl-cell mdl-cell--3-col mdl-data-table__cell--non-numeric"> Title </th>-->
-		<!--				<th class="mdl-cell mdl-cell--6-col mdl-data-table__cell--non-numeric"> Body </th>-->
-		<!--			</div>-->
-		<!--		</tr>-->
-		<!--	</thead>-->
-		<!--	<tbody>-->
-		<!--		<tr ng-repeat="post in posts">-->
-		<!--			<div class="mdl-grid">-->
-		<!--				<div class="mdl-cell mdl-cell--1-col">-->
-		<!--					<td class="mdl-cell mdl-cell--1-col"> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>-->
-		<!--				</div>-->
-		<!--				<div class="mdl-cell mdl-cell--2-col">-->
-		<!--					<td class="mdl-cell mdl-cell--2-col"ng-bind="post.userId"> </td>-->
-		<!--				</div>-->
-		<!--				<div class="mdl-cell mdl-cell--3-col">-->
-		<!--					<td class="mdl-cell mdl-cell--3-col mdl-data-table__cell--non-numeric">-->
-		<!--						<span ng-bind="post.title"></span>-->
-		<!--					</td>-->
-		<!--				</div>-->
-		<!--				<div class="mdl-cell mdl-cell--6-col">-->
-		<!--					<td class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--1-col mdl-data-table__cell--non-numeric">-->
-		<!--						<span ng-bind="post.body"></span>-->
-		<!--					</td>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--		</tr>-->
-		<!--	</tbody>       -->
-		<!--</table>-->
-		<!-- /TABLE -->
-		<!-- PAGINATION -->
-		<!-- На цій сторінці не працює! -->
-		<!-- Читав що для динамічних сторінок необхідно використовувати componentHandler.upgradeElement() -->
-		<!-- Детілі див. у PostsController.js -->
-		<button id="demo" class="mdl-button mdl-js-button mdl-button--icon">
-			<i class="material-icons">more_vert</i>
-		</button>
-		<ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="demo">
-			<li class="mdl-menu__item">Some Action</li>
-			<li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
-			<li disabled class="mdl-menu__item">Disabled Action</li>
-			<li class="mdl-menu__item">Yet Another Action</li>
-		</ul>
-		<br><br><br><br><br>
-		<!-- /PAGINATION -->
-		
-<!--	</div>-->
-<!--</div>-->
 
-		<!--<div>-->
-		<!--	<span>Résultats par page:</span>-->
-		<!--	<span>10</span>-->
-		<!--	<button id="HkhZcTBbWFADje7t2" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown">-->
-		<!--		<i class="material-icons">arrow_drop_down</i>-->
-		<!--	</button>-->
+
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--12-col">
+		<div class="mdl-card mdl-shadow--4dp" style="width: 100%">
+		<br>
 			
-		<!--	<ul for="HkhZcTBbWFADje7t2" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events">-->
-		<!--		<li tabindex="-1" data-value="10" class="mdl-menu__item mdl-js-ripple-effect">10</span>-->
-		<!--		</li>-->
-		<!--		<li tabindex="-1" data-value="20" class="mdl-menu__item mdl-js-ripple-effect">20</span>-->
-		<!--		</li>-->
-		<!--		<li tabindex="-1" data-value="30" class="mdl-menu__item mdl-js-ripple-effect">30</span>-->
-		<!--		</li>-->
-		<!--		<li tabindex="-1" data-value="40" class="mdl-menu__item mdl-js-ripple-effect">40</span>-->
-		<!--		</li>-->
-		<!--		<li tabindex="-1" data-value="50" class="mdl-menu__item mdl-js-ripple-effect">50</span>-->
-		<!--		</li>-->
-		<!--	</ul>-->
-		<!--	</span><span class="mdl-paging__count">11-20 de 25</span>-->
-		<!--	<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__prev"><i class="material-icons">keyboard_arrow_left</i>-->
-		<!--	</button>-->
-		<!--	<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__next"><i class="material-icons">keyboard_arrow_right</i>-->
-		<!--	</button>-->
-
-					<!--<div>-->
-				<!--<span><span>Résultats par page:</span><span>10</span>-->
-				<!--<button id="test" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown"><i class="material-icons">arrow_drop_down</i>-->
-				<!--</button>-->
-				<!--<ul for="test" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events">-->
-				<!--  <li data-value="10" class="mdl-menu__item mdl-js-ripple-effect">10</span>-->
-				<!--  </li>-->
-				<!--  <li tabindex="-1" data-value="20" class="mdl-menu__item mdl-js-ripple-effect">20</span>-->
-				<!--  </li>-->
-				<!--</ul>-->
-				<!--</div>-->
-		
-		
-		<!--</div>-->
+			<!-- TABLE -->		
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table table-bordered table-hover" ng-if="!postsErrorMesage">
+							<tr>
+								<th> Id </th>
+								<th> User id </th>
+								<th> Title </th>
+								<th> Body </th>
+							</tr>
+							<tr ng-repeat="post in posts">
+								<td> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>
+								<td ng-bind="post.userId"> </td>
+								<td ng-bind="post.title"> </td>
+								<td ng-bind="post.body"> </td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /TABLE -->
+			<!-- PAGINATION -->
+			<div class="mdl-grid" style="width: 100%">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--5-col">
+					<span>Posts per page:</span>
+					<span ng-bind="pageSize"></span>
+					<button id="postsPerPageButton" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown">
+						<i class="material-icons">arrow_drop_down</i>
+					</button>
+					<ul for="postsPerPageButton" class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events">
+						<li class="mdl-menu__item mdl-js-ripple-effect" ng-click="setPageSize(10)">10</li>
+						<li class="mdl-menu__item mdl-js-ripple-effect" ng-click="setPageSize(20)">20</li>
+						<li class="mdl-menu__item mdl-js-ripple-effect" ng-click="setPageSize(50)">50</li>
+					</ul>
+					
+					<!--<span ng-bind="pageNumber * pageSize - pageSize + 1"></span>-->
+					<span ng-bind="pageBegin"></span>
+					<span>-</span>
+					<!--<span ng-bind="pageNumber * pageSize"></span>-->
+					<span ng-bind="pageEnd"></span>
+					<span>of<span>
+					<span ng-bind="postsQuantity"></span>
+					
+					
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__prev" ng-click="onSelectPage(pageNumber - 1)" ng-if="pageBegin > 1">
+						<i class="material-icons">keyboard_arrow_left</i>
+					</button>
+					
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__next" ng-click="onSelectPage(pageNumber + 1)" ng-if="pageEnd < postsQuantity">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</button>
+					
+				</div>
+			</div>
+			<!-- /PAGINATION -->
+			
+		</div>
+	</div>
+</div>
 
 
 <!-- ################# -->
