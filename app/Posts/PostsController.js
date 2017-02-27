@@ -2,6 +2,7 @@ app.controller('postsController', function($scope, PostsService) {
 	$scope.loading = true;
 	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
+	// $scope.materialDesign = true;
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		$scope.pageNumber = 1;
@@ -11,7 +12,10 @@ app.controller('postsController', function($scope, PostsService) {
 		$scope.pageNumber = pageNumber;
 		getPostsService();
 	};
-	// USE STANDART CALLBACK
+	$scope.materialDesignSwitcher = function () {
+		$scope.materialDesign = !$scope.materialDesign;
+	};
+	
 	function getPostsService () {
 		PostsService.getPosts($scope.pageSize, $scope.pageNumber,
 			function(err, result) {

@@ -1,6 +1,4 @@
-<!-- ########### -->
-<!-- ### MDL ### -->
-<!-- ########### -->
+<!-- LOADING -->
 <div ng-if="loading" class="mdl-grid">
 	<div class="mdl-layout-spacer"></div>
 	<div class="mdl-cell mdl-cell--1-col">
@@ -8,11 +6,16 @@
 	</div>	
 	<div class="mdl-layout-spacer"></div>
 </div>
+<!-- /LOADING -->
 
-<div class="mdl-grid">
+<!-- ############################ -->
+<!-- ### Material Design Lite ### -->
+<!-- ############################ -->
+<div class="mdl-grid" ng-if="materialDesign">
 	<div class="mdl-cell mdl-cell--12-col">
 		<div class="mdl-card mdl-shadow--4dp" style="width: 100%">
 		<br>
+		
 			<!-- POSTS -->		
 			<div class="container">
 				<div class="row">
@@ -35,6 +38,7 @@
 				</div>
 			</div>
 			<!-- /POSTS -->
+			
 			<!-- PAGINATION -->
 			<div class="mdl-grid" style="width: 100%">
 				<div class="mdl-layout-spacer"></div>
@@ -63,6 +67,7 @@
 				</div>
 			</div>
 			<!-- /PAGINATION -->
+			
 		</div>
 	</div>
 </div>
@@ -71,44 +76,43 @@
 <!-- ################# -->
 <!-- ### BOOTSTRAP ### -->
 <!-- ################# -->
+<div class="container" ng-if="!materialDesign">
+	<div class="row">
+		<div class="col-md-12">
 
-<!--<div class="container">-->
-<!--	<div class="row">-->
-<!--		<div class="col-md-12">-->
+			<div class="dropdown">
+		    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Posts per pages:
+		    	<span ng-bind="pageSize"></span>
+		    	<span class="caret"></span>
+		    </button>
+		    <ul class="dropdown-menu">
+		      <li> <a ng-href="" ng-click="setPageSize(10)"> 10 </a> </li>
+		      <li> <a ng-href="" ng-click="setPageSize(20)"> 20 </a> </li>
+		      <li> <a ng-href="" ng-click="setPageSize(50)"> 50 </a> </li>
+		    </ul>
+		  </div>
+			<br>
+			
+			<table class="table table-bordered table-hover" ng-if="!postsErrorMesage">
+				<tr>
+					<th> Id </th>
+					<th> User id </th>
+					<th> Title </th>
+					<th> Body </th>
+				</tr>
+				<tr ng-repeat="post in posts">
+					<td> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>
+					<td ng-bind="post.userId"> </td>
+					<td ng-bind="post.title"> </td>
+					<td ng-bind="post.body"> </td>
+				</tr>
+			</table>
+			
+			<pagination posts-quantity="postsQuantity" page-size="pageSize" on-select-page="onSelectPage"></pagination>
 
-<!--			<div class="dropdown">-->
-<!--		    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Posts per pages:-->
-<!--		    	<span ng-bind="pageSize"></span>-->
-<!--		    	<span class="caret"></span>-->
-<!--		    </button>-->
-<!--		    <ul class="dropdown-menu">-->
-<!--		      <li> <a ng-href="" ng-click="setPageSize(10)"> 10 </a> </li>-->
-<!--		      <li> <a ng-href="" ng-click="setPageSize(20)"> 20 </a> </li>-->
-<!--		      <li> <a ng-href="" ng-click="setPageSize(50)"> 50 </a> </li>-->
-<!--		    </ul>-->
-<!--		  </div>-->
-<!--			<br>-->
+			<div ng-bind="postsErrorMesage" ng-if="postsErrorMesage" class="alert alert-danger" role="alert"></div>
 			
-<!--			<table class="table table-bordered table-hover" ng-if="!postsErrorMesage">-->
-<!--				<tr>-->
-<!--					<th> Id </th>-->
-<!--					<th> User id </th>-->
-<!--					<th> Title </th>-->
-<!--					<th> Body </th>-->
-<!--				</tr>-->
-<!--				<tr ng-repeat="post in posts">-->
-<!--					<td> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>-->
-<!--					<td ng-bind="post.userId"> </td>-->
-<!--					<td ng-bind="post.title"> </td>-->
-<!--					<td ng-bind="post.body"> </td>-->
-<!--				</tr>-->
-<!--			</table>-->
-			
-<!--			<pagination posts-quantity="postsQuantity" page-size="pageSize" on-select-page="onSelectPage"></pagination>-->
-
-<!--			<div ng-bind="postsErrorMesage" ng-if="postsErrorMesage" class="alert alert-danger" role="alert"></div>-->
-			
-<!--		</div>-->
-<!--	</div>-->
-<!--</div> -->
+		</div>
+	</div>
+</div> 
  
