@@ -69,19 +69,6 @@ app.controller('postsController', function($scope, PostsService) {
 	// Material Design Lite will automatically register and render all elements
 	// marked with MDL classes upon page load. However in the case where you are 
 	// creating DOM elements dynamically you need to register new elements 
-	// using the upgradeElement function. Here is how you can dynamically create 
-	// the same raised button with ripples shown in the section above:
-	
-	// var button = document.createElement('button');
-	// var textNode = document.createTextNode('Click Me!');
-	// button.appendChild(textNode);
-	// button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
-	// componentHandler.upgradeElement(button);
-	// document.getElementById('container').appendChild(button);	
-	
-	//   var syncMDL = function() {
-	//     componentHandler.syncElementsThatCssClassChanged();
-	//   };
-	//   syncMDL();
+	// using the upgradeElement function. 
 	
 });
