@@ -1,8 +1,7 @@
-app.controller('postsController', function($scope, PostsService) {
+app.controller('postsController', function($scope, $filter, PostsService) {
 	$scope.loading = true;
 	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
-	// $scope.materialDesign = true;
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		$scope.pageNumber = 1;
@@ -16,8 +15,13 @@ app.controller('postsController', function($scope, PostsService) {
 		$scope.materialDesign = !$scope.materialDesign;
 	};
 	
+	function setLocalStorage (posts) {
+		window.localStorage.timeStorage = Date.parse($filter('date')(new Date(),'yyyy-MM-dd HH:mm:ss'));
+		window.localStorage.posts = window.angular.toJson(posts);
+	}
+	
 	function getPostsService () {
-		PostsService.getPosts($scope.pageSize, $scope.pageNumber,
+		PostsService.getPosts(
 			function(err, result) {
 				if (err) {
 					console.log(err);
@@ -25,19 +29,25 @@ app.controller('postsController', function($scope, PostsService) {
 					return;
 				}
 				$scope.postsErrorMesage = null;
-				$scope.posts = result.posts;
-				$scope.postsQuantity = result.postsQuantity;
+				$scope.postsQuantity = result.length;
 				$scope.pageEnd = $scope.pageNumber * $scope.pageSize;
 				$scope.pageBegin = $scope.pageEnd - $scope.pageSize + 1;
 				$scope.loading = false;
+				debugger;
+				if (!window.localStorage.timeStorage) {setLocalStorage(result)}
+				debugger;
+				if (Date.now() - window.localStorage.timeStorage > 300000) {setLocalStorage(result)}
+				$scope.timeStorage = window.localStorage.timeStorage;
+				$scope.posts = JSON.parse(window.localStorage.posts).splice(
+					($scope.pageNumber * $scope.pageSize) - $scope.pageSize, $scope.pageSize
+				);
+				debugger;
 			}
 		);
 	}
-	getPostsService();
-	
 
-	
-	
+	getPostsService();
+
 	// ###########################
 	// ###     For MDL only    ###
 	// ### Update new elements ###
@@ -51,7 +61,7 @@ app.controller('postsController', function($scope, PostsService) {
 	// Again, it is only a workaround, until MDL supports "automatically dynamic" websites.
 	// See details on https://github.com/google/material-design-lite/issues/917
 	
-	var observer = new MutationObserver(function(mutations) {
+	var observer = new window.MutationObserver(function(mutations) {
 		var upgrade = false;
 		for (var i = 0; i < mutations.length; i++) {
 			if (mutations[i].addedNodes.length > 0) {

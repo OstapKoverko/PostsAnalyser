@@ -31,15 +31,20 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 		} console.log("Form is invalid !!!");
 	};
 
-	PostsService.getPostById($routeParams.id).then(
-		function onSuccess(response) {
-			$scope.post = response.data;
-			$scope.postErrorMessage = null;
-		}, function onError(response) {
-			console.log("GetPostById method's status: " + response.status + " " + response.statusText);
-			$scope.postErrorMessage = "GetPostById method's status: " + response.status + " " + response.statusText;
-		}
-	);
+	$scope.post = function (postId) {
+		return JSON.parse(window.localStorage.posts)[postId];
+	}(+($routeParams.id) - 1);
+
+	// PostsService.getPostById($routeParams.id).then(
+	// 	function onSuccess(response) {
+	// 		$scope.post = response.data;
+	// 		$scope.postErrorMessage = null;
+	// 	}, function onError(response) {
+	// 		console.log("GetPostById method's status: " + response.status + " " + response.statusText);
+	// 		$scope.postErrorMessage = "GetPostById method's status: " + response.status + " " + response.statusText;
+	// 	}
+	// );
+
 
 	PostsService.getCommentsByPostId($routeParams.id).then(
 		function onSuccess(response) {
@@ -59,7 +64,7 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 	);
 
 	// DOM Updater for MDL new component
-	var observer = new MutationObserver(function(mutations) {
+	var observer = new window.MutationObserver(function(mutations) {
 		var upgrade = false;
 		for (var i = 0; i < mutations.length; i++) {
 			if (mutations[i].addedNodes.length > 0) {

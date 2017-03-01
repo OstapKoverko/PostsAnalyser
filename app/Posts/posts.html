@@ -42,7 +42,17 @@
 			<!-- PAGINATION -->
 			<div class="mdl-grid" style="width: 100%">
 				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--6-col">
+			  	<span>Time storage:</span>
+			  	<span ng-bind="timeStorage | date:'yyyy-MM-dd HH:mm:ss'"></span>
+			  </div>
+				
 				<div class="mdl-cell mdl-cell--5-col">
+					
+								<!-- TIME STORAGE -->
+		
+			<!-- /TIME STORAGE -->
+					
 					<span>Posts per page:</span>
 					<span ng-bind="pageSize"></span>
 					<button id="postsPerPageButton" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown">
@@ -68,6 +78,8 @@
 			</div>
 			<!-- /PAGINATION -->
 			
+
+			
 		</div>
 	</div>
 </div>
@@ -80,6 +92,7 @@
 	<div class="row">
 		<div class="col-md-12">
 
+			<!-- PAGE SIZING -->
 			<div class="dropdown">
 		    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Posts per pages:
 		    	<span ng-bind="pageSize"></span>
@@ -91,8 +104,9 @@
 		      <li> <a ng-href="" ng-click="setPageSize(50)"> 50 </a> </li>
 		    </ul>
 		  </div>
+		  <!-- /PAGE SIZING -->
 			<br>
-			
+			<!-- POSTS -->
 			<table class="table table-bordered table-hover" ng-if="!postsErrorMesage">
 				<tr>
 					<th> Id </th>
@@ -107,6 +121,14 @@
 					<td ng-bind="post.body"> </td>
 				</tr>
 			</table>
+			<!-- /POSTS -->
+			
+			<!-- TIME STORAGE -->
+			<div>
+		  	<span>Time storage:</span>
+		  	<span ng-bind="timeStorage | date:'yyyy-MM-dd HH:mm:ss'"></span>
+		  </div>
+			<!-- /TIME STORAGE -->
 			
 			<pagination posts-quantity="postsQuantity" page-size="pageSize" on-select-page="onSelectPage"></pagination>
 
