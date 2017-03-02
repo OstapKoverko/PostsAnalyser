@@ -15,37 +15,27 @@ app.controller('postsController', function($scope, $filter, PostsService) {
 		$scope.materialDesign = !$scope.materialDesign;
 	};
 	
-	function setLocalStorage (posts) {
-		window.localStorage.timeStorage = Date.parse($filter('date')(new Date(),'yyyy-MM-dd HH:mm:ss'));
-		window.localStorage.posts = window.angular.toJson(posts);
-	}
-	
-	function getPostsService () {
-		PostsService.getPosts(
-			function(err, result) {
-				if (err) {
-					console.log(err);
-					$scope.postsErrorMesage = err;
-					return;
-				}
+	function getPostsService() {
+		PostsService.getPosts(function (response) {
+			if (response) {
+				console.log("GetPosts method's status: " + response.status + " " + response.statusText);
+				$scope.postsErrorMesage = response.data;	
+				debugger;
+			} else {
 				$scope.postsErrorMesage = null;
-				$scope.postsQuantity = result.length;
-				$scope.pageEnd = $scope.pageNumber * $scope.pageSize;
-				$scope.pageBegin = $scope.pageEnd - $scope.pageSize + 1;
-				$scope.loading = false;
-				debugger;
-				if (!window.localStorage.timeStorage) {setLocalStorage(result)}
-				debugger;
-				if (Date.now() - window.localStorage.timeStorage > 300000) {setLocalStorage(result)}
 				$scope.timeStorage = window.localStorage.timeStorage;
 				$scope.posts = JSON.parse(window.localStorage.posts).splice(
 					($scope.pageNumber * $scope.pageSize) - $scope.pageSize, $scope.pageSize
 				);
+				$scope.postsQuantity = JSON.parse(window.localStorage.posts).length;
+				$scope.pageEnd = $scope.pageNumber * $scope.pageSize;
+				$scope.pageBegin = $scope.pageEnd - $scope.pageSize + 1;
+				$scope.loading = false;
 				debugger;
 			}
-		);
+		});  
 	}
-
+		
 	getPostsService();
 
 	// ###########################
