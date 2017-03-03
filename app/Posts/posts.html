@@ -38,21 +38,19 @@
 				</div>
 			</div>
 			<!-- /POSTS -->
-			
-			<!-- PAGINATION -->
+
 			<div class="mdl-grid" style="width: 100%">
 				<div class="mdl-layout-spacer"></div>
+				
+				<!-- TIME STORAGE -->
 				<div class="mdl-cell mdl-cell--6-col">
 			  	<span>Time storage:</span>
 			  	<span ng-bind="timeStorage | date:'yyyy-MM-dd HH:mm:ss'"></span>
 			  </div>
+			  <!-- /TIME STORAGE -->
 				
+				<!-- PAGINATION -->
 				<div class="mdl-cell mdl-cell--5-col">
-					
-								<!-- TIME STORAGE -->
-		
-			<!-- /TIME STORAGE -->
-					
 					<span>Posts per page:</span>
 					<span ng-bind="pageSize"></span>
 					<button id="postsPerPageButton" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown">
@@ -75,10 +73,8 @@
 						<i class="material-icons">keyboard_arrow_right</i>
 					</button>
 				</div>
+				<!-- /PAGINATION -->
 			</div>
-			<!-- /PAGINATION -->
-			
-
 			
 		</div>
 	</div>
