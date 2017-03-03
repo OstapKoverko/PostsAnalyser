@@ -16,25 +16,24 @@ app.controller('postsController', function($scope, $filter, PostsService) {
 	};
 	
 	function getPostsService () {
-		PostsService.getPosts($scope.pageSize, $scope.pageNumber,
-			function(err, result) {
-				if (err) {
-					console.log(err);
-					$scope.postsErrorMesage = err;
-					return;
-				}
+		PostsService.getPosts($scope.pageSize, $scope.pageNumber).then(
+			function onSuccess(response) {
 				$scope.postsErrorMesage = null;
-				$scope.posts = result.posts;
-				$scope.postsQuantity = result.postsQuantity;
-				$scope.timeStorage = result.timeStorage;
+				$scope.posts = response.posts;
+				$scope.postsQuantity = response.postsQuantity;
+				$scope.timeStorage = response.timeStorage;
 				$scope.pageEnd = $scope.pageNumber * $scope.pageSize;
 				$scope.pageBegin = $scope.pageEnd - $scope.pageSize + 1;
 				$scope.loading = false;
 				debugger;
+			},
+			function onError(response) {
+				console.log(response);
+				$scope.postsErrorMesage = response;
 			}
 		);
 	}
-	getPostsService();
+	getPostsService();		
 
 	// ###########################
 	// ###     For MDL only    ###
