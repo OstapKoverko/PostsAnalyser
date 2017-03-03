@@ -1,6 +1,6 @@
 app.service('PostsService', function($http, $filter) { 
 	// USE STANDART CALLBACK
-	this.getPosts = function (callback) {
+	this.getPosts = function (pageSize, pageNumber, callback) {
 		$http.get("https://jsonplaceholder.typicode.com/posts").then( 
 			function onSuccess(response) {
 				function setLocalStorage(posts){
@@ -9,16 +9,20 @@ app.service('PostsService', function($http, $filter) {
 				}
 				if (!window.localStorage.timeStorage) {setLocalStorage(response.data)}
 				if (Date.now() - window.localStorage.timeStorage > 300000) {setLocalStorage(response.data)}
+				callback(null, {
+					postsQuantity: JSON.parse(window.localStorage.posts).length,
+					posts: JSON.parse(window.localStorage.posts).splice((pageNumber * pageSize) - pageSize, pageSize),
+					timeStorage: window.localStorage.timeStorage
+				});
 				debugger;
-				callback();
 			},
 			function onError(response) {
-				callback(response.data);
+				callback("GetPosts method's status: " + response.status + " " + response.statusText);
 			}
 		);
 	};
 
-	// USE PROMISES
+	// USE PROMISE
 	this.savePost = function (id, data) {
 		return $http.put("https://jsonplaceholder.typicode.com/posts/" + id, data);
 	};
