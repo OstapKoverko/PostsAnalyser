@@ -5,17 +5,17 @@ app.controller('postsController', function($scope, $filter, PostsService) {
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		$scope.pageNumber = 1;
-		getPostsService();
+		getPosts();
 	};
 	$scope.onSelectPage = function (pageNumber) {
 		$scope.pageNumber = pageNumber;
-		getPostsService();
+		getPosts();
 	};
 	$scope.materialDesignSwitcher = function () {
 		$scope.materialDesign = !$scope.materialDesign;
 	};
 	
-	function getPostsService () {
+	function getPosts () {
 		PostsService.getPosts($scope.pageSize, $scope.pageNumber).then(
 			function onSuccess(response) {
 				$scope.postsErrorMesage = null;
@@ -33,7 +33,7 @@ app.controller('postsController', function($scope, $filter, PostsService) {
 			}
 		);
 	}
-	getPostsService();		
+	getPosts();		
 
 	// ###########################
 	// ###     For MDL only    ###
