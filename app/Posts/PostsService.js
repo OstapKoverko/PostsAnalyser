@@ -48,7 +48,7 @@ app.service('PostsService', function($http, $filter, $q) {
 					if (i > -1) {
 						callback(Date.now() - result.rows.item(i)['timeStorage'] > 60000);
 						return;
-					} callback(i > -1);
+					} callback(true);
 					debugger;
 				}, null);
 			});
