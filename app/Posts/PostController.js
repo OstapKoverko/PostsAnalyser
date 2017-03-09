@@ -1,7 +1,8 @@
-app.controller('postController', function($scope, $routeParams, PostsService){
+app.controller('postController', function($scope, $routeParams, PostsService, styleSwitcher){
 	// USE PROMISES
 	$scope.loading = true;
 	$scope.formEditable = false;
+	$scope.styleChange = styleSwitcher.styleChange();
 	$scope.editPost = function () {
 		$scope.formEditable = true;
 	};

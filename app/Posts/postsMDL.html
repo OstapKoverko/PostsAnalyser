@@ -1,0 +1,83 @@
+<!-- ############################ -->
+<!-- ### Material Design Lite ### -->
+<!-- ############################ -->
+
+<!-- LOADING -->
+<div ng-if="loading" class="mdl-grid">
+	<div class="mdl-layout-spacer"></div>
+	<div class="mdl-cell mdl-cell--1-col">
+		<p class="mdl-spinner mdl-js-spinner is-active"></p>
+	</div>	
+	<div class="mdl-layout-spacer"></div>
+</div>
+<!-- /LOADING -->
+
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--12-col">
+		<div class="mdl-card mdl-shadow--4dp" style="width: 100%">
+		<br>
+		
+			<!-- POSTS -->		
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table table-hover" ng-if="!postsErrorMesage">
+							<tr>
+								<th> Id </th>
+								<th> User id </th>
+								<th> Title </th>
+								<th> Body </th>
+							</tr>
+							<tr ng-repeat="post in posts">
+								<td> <a ng-href="#posts/{{ post.id }}" ng-bind="post.id"> </a> </td>
+								<td ng-bind="post.userId"> </td>
+								<td ng-bind="post.title"> </td>
+								<td ng-bind="post.body"> </td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /POSTS -->
+
+			<div class="mdl-grid" style="width: 100%">
+				<div class="mdl-layout-spacer"></div>
+				
+				<!-- TIME STORAGE -->
+				<div class="mdl-cell mdl-cell--6-col">
+					<span>Time storage:</span>
+					<span ng-bind="timeStorage | date:'yyyy-MM-dd HH:mm:ss'"></span>
+				</div>
+				<!-- /TIME STORAGE -->
+				
+				<!-- PAGINATION -->
+				<div class="mdl-cell mdl-cell--5-col">
+					<span>Posts per page:</span>
+					<span ng-bind="pageSize"></span>
+					<button id="postsPerPageButton" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown">
+						<i class="material-icons">arrow_drop_down</i>
+					</button>
+					<ul for="postsPerPageButton" class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events">
+						<li class="mdl-menu__item mdl-js-ripple-effect" ng-click="setPageSize(10)">10</li>
+						<li class="mdl-menu__item mdl-js-ripple-effect" ng-click="setPageSize(20)">20</li>
+						<li class="mdl-menu__item mdl-js-ripple-effect" ng-click="setPageSize(50)">50</li>
+					</ul>
+					<span ng-bind="pageBegin"></span>
+					<span>-</span>
+					<span ng-bind="pageEnd"></span>
+					<span>of<span>
+					<span ng-bind="postsQuantity"></span>
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__prev" ng-click="onSelectPage(pageNumber - 1)" ng-if="pageBegin > 1">
+						<i class="material-icons">keyboard_arrow_left</i>
+					</button>
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__next" ng-click="onSelectPage(pageNumber + 1)" ng-if="pageEnd < postsQuantity">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</button>
+				</div>
+				<!-- /PAGINATION -->
+				
+			</div>
+			
+		</div>
+	</div>
+</div>

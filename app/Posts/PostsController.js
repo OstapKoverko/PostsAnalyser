@@ -1,7 +1,8 @@
-app.controller('postsController', function($scope, $filter, PostsService) {
+app.controller('postsController', function($scope, $filter, PostsService, styleSwitcher) {
 	$scope.loading = true;
 	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
+	$scope.styleChange = styleSwitcher.styleChange();
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		$scope.pageNumber = 1;

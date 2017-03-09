@@ -1,3 +1,7 @@
+<!-- ################# -->
+<!-- ### BOOTSTRAP ### -->
+<!-- ################# -->
+
 <!-- LOADING-->
 <div ng-if="loading" class="mdl-grid">
 	<div class="mdl-layout-spacer"></div>
@@ -8,150 +12,59 @@
 </div>
 <!-- /LOADING -->
 
-<!-- ############################ -->
-<!-- ### Material Design Lite ### -->
-<!-- ############################ -->
-<!-- POST -->
-<div class="mdl-grid" ng-if="materialDesign">
-	<div class="mdl-layout-spacer"></div>
-	<div class="mdl-cell mdl-cell--6-col">
-		<div class="mdl-card mdl-shadow--4dp" style="width: 100%">
-			<div class="mdl-grid" style="width: 100%">
-				<div class="mdl-cell mdl-cell--8-col" style="width: 100%">
-					<div class="mdl-card__title">
-  					<h3 class="mdl-card__title-text">
-  						<span>Post </span>
-  						<span ng-bind="post.id"></span>
-  					</h3>
-				  </div>
-					<form name="postForm" ng-submit="savePost(postForm)" ng-if="!postErrorMessage" novalidate>
-						<fieldset>
-					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-					    <input class="mdl-textfield__input is-focused" type="text" id="title" name="title" ng-model="post.title" ng-readonly="!formEditable" ng-required="true">
-					    <label class="mdl-textfield__label" for="title">Title</label>
-					    <span class="mdl-tooltip mdl-tooltip--validation" for="title" ng-if="postForm.title.$invalid">
-            		<span ng-if="postForm.title.$invalid">Required.</span>
-            	</span>
-					  </div>
-					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-						  <textarea class="mdl-textfield__input is-focused" type="text" rows="4" id="body" name="memo" ng-model="post.body" ng-readonly="!formEditable" ng-required="true" style="width: 100%"></textarea>
-					    <label class="mdl-textfield__label" for="body">Memo</label>
-					    <span class="mdl-tooltip mdl-tooltip--validation" for="body" ng-if="postForm.memo.$invalid">
-	          		<span ng-if="postForm.memo.$invalid">Required.</span>
-	          	</span>
-	          </div>
-					  </fieldset>
-					</form>
-				</div>
-			</div>
+<!-- POSTS -->
+<h3> Post <span ng-bind="post.id"> </span> </h3>
+<form name="postForm" class="form-horizontal" ng-submit="savePost(postForm)" ng-if="!postErrorMessage">
+	<div class="form-group" ng-class="{ 'has-error' : postForm.title.$invalid }">
+		<label class="col-sm-2 control-label">
+			<span>Title</span>
+			<span class="glyphicon glyphicon-asterisk text-danger" ng-if="formEditable"></span>
+		</label>
+		<div class="col-sm-10">
+			<input name="title" type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="!formEditable" required>
+			<span ng-if="postForm.title.$invalid" class="help-block">The title is required.</span>
 		</div>
 	</div>
-	<div class="mdl-layout-spacer"></div>
-</div>
-<!-- /POST -->
-
-<!-- FAB BUTTONS -->
-<div class="mdl-grid" ng-if="materialDesign">
-	<div class="mdl-layout-spacer"></div>
-	<div class="mdl-cell mdl-cell--3-col">
-		<button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp" ng-click="editPost()" ng-if="!formEditable">
-			<i class="material-icons">mode_edit</i>
-		</button>	
-		<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="cancelEditPost()" ng-if="formEditable">Cansel</button>
-		<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  ng-if="formEditable" ng-disabled="postForm.title.$invalid || postForm.memo.$invalid">
-			<i class="material-icons">send</i>
-		</button>
+	<div class="form-group" ng-class="{ 'has-error' : postForm.memo.$invalid }">
+		<label class="col-sm-2 control-label">
+			<span>Memo</span>
+			<span class="glyphicon glyphicon-asterisk text-danger" ng-if="formEditable"></span>
+		</label>
+		<div class="col-sm-10">
+			<input name="memo" type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="!formEditable" required>
+			<span ng-if="postForm.memo.$invalid" class="help-block">The memo is required.</span>
+		</div>
 	</div>
-</div>
-<!-- /FAB BUTTONS -->
-	
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="button" ng-click="editPost()" ng-if="!formEditable" class="btn btn-default">Edit</button>
+			<button type="button" ng-click="cancelEditPost()" ng-if="formEditable" class="btn btn-default">Cancel</button>
+			<button type="submit" ng-if="formEditable" ng-disabled="postForm.title.$invalid || postForm.memo.$invalid" class="btn btn-default">Save</button>
+		</div>
+	</div>
+</form>
+<div ng-bind="postErrorMessage" ng-if="postErrorMessage" class="alert alert-danger" role="alert"></div>
+<!-- /POSTS -->
+<br>
+<br>
+<br>
 <!-- COMMENTS -->
-<div class="mdl-grid" ng-if="materialDesign">
-	<div class="mdl-cell mdl-cell--12-col">
-		<div class="mdl-card mdl-shadow--4dp" style="width: 100%">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h4>Comments</h4>
-						<table class="table table-bordered table-hover" ng-if="!commentsErrorMessage">
-							<tr>
-								<th> Id </th>
-								<th> Post id </th>
-								<th> Name </th>
-								<th> Email </th>
-								<th> Body </th>  
-							</tr>
-							<tr ng-repeat="comment in comments">
-								<td ng-bind="comment.id"> </td>
-								<td ng-bind="comment.postId"> </td>
-								<td ng-bind="comment.name"> </td>
-								<td ng-bind="comment.email"> </td>
-								<td ng-bind="comment.body"> </td>
-							</tr>
-							</table> 
-						</div>
-					</div>
-				</div>
-		</div>
-	</div>
-</div>
+<h3>Comments</h3>
+<table class="table table-bordered table-hover" ng-if="!commentsErrorMessage">
+	<tr>
+		<th> Id </th>
+		<th> Post id </th>
+		<th> Name </th>
+		<th> Email </th>
+		<th> Body </th>  
+	</tr>
+	<tr ng-repeat="comment in comments">
+		<td ng-bind="comment.id"> </td>
+		<td ng-bind="comment.postId"> </td>
+		<td ng-bind="comment.name"> </td>
+		<td ng-bind="comment.email"> </td>
+		<td ng-bind="comment.body"> </td>
+	</tr>
+</table> 
+<div ng-bind="commentsErrorMessage" ng-if="commentsErrorMessage" class="alert alert-danger" role="alert"></div>
 <!-- /COMMENTS -->
-
-<!-- ################# -->
-<!-- ### BOOTSTRAP ### -->
-<!-- ################# -->
-
-<div ng-if="!materialDesign">
-	<h3> Post <span ng-bind="post.id"> </span> </h3>
-	<form name="postForm" class="form-horizontal" ng-submit="savePost(postForm)" ng-if="!postErrorMessage">
-		<div class="form-group" ng-class="{ 'has-error' : postForm.title.$invalid }">
-			<label class="col-sm-2 control-label">
-				<span>Title</span>
-				<span class="glyphicon glyphicon-asterisk text-danger" ng-if="formEditable"></span>
-			</label>
-			<div class="col-sm-10">
-				<input name="title" type="text" class="form-control" id="title" ng-model="post.title" ng-readonly="!formEditable" required>
-				<span ng-if="postForm.title.$invalid" class="help-block">The title is required.</span>
-			</div>
-		</div>
-		<div class="form-group" ng-class="{ 'has-error' : postForm.memo.$invalid }">
-			<label class="col-sm-2 control-label">
-				<span>Memo</span>
-				<span class="glyphicon glyphicon-asterisk text-danger" ng-if="formEditable"></span>
-			</label>
-			<div class="col-sm-10">
-				<input name="memo" type="text" class="form-control" id="body" ng-model="post.body" ng-readonly="!formEditable" required>
-				<span ng-if="postForm.memo.$invalid" class="help-block">The memo is required.</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="button" ng-click="editPost()" ng-if="!formEditable" class="btn btn-default">Edit</button>
-				<button type="button" ng-click="cancelEditPost()" ng-if="formEditable" class="btn btn-default">Cancel</button>
-				<button type="submit" ng-if="formEditable" ng-disabled="postForm.title.$invalid || postForm.memo.$invalid" class="btn btn-default">Save</button>
-			</div>
-		</div>
-	</form>
-	<!--<div ng-bind="postErrorMessage" ng-if="postErrorMessage" class="alert alert-danger" role="alert"></div>-->
-	<br>
-	<br>
-	<br>
-	<h3>Comments</h3>
-	<table class="table table-bordered table-hover" ng-if="!commentsErrorMessage">
-		<tr>
-			<th> Id </th>
-			<th> Post id </th>
-			<th> Name </th>
-			<th> Email </th>
-			<th> Body </th>  
-		</tr>
-		<tr ng-repeat="comment in comments">
-			<td ng-bind="comment.id"> </td>
-			<td ng-bind="comment.postId"> </td>
-			<td ng-bind="comment.name"> </td>
-			<td ng-bind="comment.email"> </td>
-			<td ng-bind="comment.body"> </td>
-		</tr>
-	</table> 
-	<div ng-bind="commentsErrorMessage" ng-if="commentsErrorMessage" class="alert alert-danger" role="alert"></div>
-</div>
