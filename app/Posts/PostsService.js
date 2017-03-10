@@ -58,6 +58,9 @@ app.service('PostsService', function($http, $filter, $q) {
 		// 	window.localStorage.posts = window.angular.toJson(posts);
 		// 	debugger;
 		// }
+	this.getPostById = function (id) {
+		return $http.get("https://jsonplaceholder.typicode.com/posts/" + id);
+	};
 	
 	this.savePost = function (id, data) {
 		return $http.put("https://jsonplaceholder.typicode.com/posts/" + id, data);

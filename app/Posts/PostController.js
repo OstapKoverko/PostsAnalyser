@@ -32,20 +32,15 @@ app.controller('postController', function($scope, $routeParams, PostsService, st
 		} console.log("Form is invalid !!!");
 	};
 
-	$scope.post = function (postId) {
-		return JSON.parse(window.localStorage.posts)[postId];
-	}(+($routeParams.id) - 1);
-
-	// PostsService.getPostById($routeParams.id).then(
-	// 	function onSuccess(response) {
-	// 		$scope.post = response.data;
-	// 		$scope.postErrorMessage = null;
-	// 	}, function onError(response) {
-	// 		console.log("GetPostById method's status: " + response.status + " " + response.statusText);
-	// 		$scope.postErrorMessage = "GetPostById method's status: " + response.status + " " + response.statusText;
-	// 	}
-	// );
-
+	PostsService.getPostById($routeParams.id).then(
+		function onSuccess(response) {
+			$scope.post = response.data;
+			$scope.postErrorMessage = null;
+		}, function onError(response) {
+			console.log("GetPostById method's status: " + response.status + " " + response.statusText);
+			$scope.postErrorMessage = "GetPostById method's status: " + response.status + " " + response.statusText;
+		}
+	);
 
 	PostsService.getCommentsByPostId($routeParams.id).then(
 		function onSuccess(response) {

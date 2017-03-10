@@ -1,5 +1,5 @@
 app.provider("styleSwitcher", function() {
-	var materialDesign = false;
+	var materialDesign = true;
 	return {
 		materialDesign: materialDesign,
 		$get: function() {
