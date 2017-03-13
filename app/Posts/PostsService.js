@@ -1,6 +1,7 @@
 app.service('PostsService', function($http, $filter, $q) { 
-	this.getPosts = function (pageSize, pageNumber) {
+	this.getPosts = function (pageSize, pageNumber, storage) {
     var deferred = $q.defer();
+    
     $http.get("https://jsonplaceholder.typicode.com/posts").then(
     	// WEB SQL
     	function onSuccess(response) {

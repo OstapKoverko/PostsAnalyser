@@ -1,8 +1,8 @@
-app.controller('postsController', function($scope, $filter, PostsService, styleSwitcher) {
+app.controller('postsController', function($scope, $filter, PostsService) {
+	var storage = 'localStorage';
 	$scope.loading = true;
 	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
-	$scope.styleChange = styleSwitcher.styleChange();
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		$scope.pageNumber = 1;
@@ -12,12 +12,15 @@ app.controller('postsController', function($scope, $filter, PostsService, styleS
 		$scope.pageNumber = pageNumber;
 		getPosts();
 	};
-	$scope.materialDesignSwitcher = function () {
-		$scope.materialDesign = !$scope.materialDesign;
+	$scope.setLocalStorage = function () {
+		debugger;
 	};
+	$scope.setWebSQL = function () {
+		debugger;
+	}
 	
 	function getPosts () {
-		PostsService.getPosts($scope.pageSize, $scope.pageNumber).then(
+		PostsService.getPosts($scope.pageSize, $scope.pageNumber, storage).then(
 			function onSuccess(response) {
 				$scope.postsErrorMesage = null;
 				$scope.posts = response.posts;

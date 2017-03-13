@@ -1,7 +1,7 @@
 var app = window.angular.module('myApp', ["ngRoute"]);
 
 app.config(function($routeProvider, styleSwitcherProvider) {
-  if (styleSwitcherProvider.materialDesign) {
+  if (styleSwitcherProvider.framework == "material") {
     $routeProvider  
     .when("/", {
       templateUrl : "app/Posts/postsMaterial.html",
@@ -28,21 +28,6 @@ app.config(function($routeProvider, styleSwitcherProvider) {
     .when("/posts/:id", {
       templateUrl : "app/Posts/post.html",
       controller : "postController"
-    })
-    .when("/framework: 'material'", {
-      templateUrl : "app/Posts/postsMDL.html",
-      controller : "postController"
     });
   } 
-
-  // .when("/", {
-  //     templateUrl : "app/Posts/posts.html",
-  //     controller : "postsController"
-  //   })
-  // .when("/posts/:framework", {
-  //     templateUrl :  function(params){
-  //       return 'app/Posts/posts' + params.framework + '.html';
-  //     },
-  //     controller : "postController"
-  //   });
 });
