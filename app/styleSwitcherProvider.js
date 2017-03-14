@@ -10,6 +10,8 @@ app.provider("styleSwitcher", function() {
 	}
   return {
     framework: getParameterByName('framework'),
-    $get: function () {}
+    $get: function () {
+    	return getParameterByName('framework');
+    }
   };			 
 });	
