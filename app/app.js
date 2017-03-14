@@ -15,7 +15,7 @@ app.config(function($routeProvider, styleSwitcherProvider) {
       templateUrl : "app/Posts/postMaterial.html",
       controller : "postController"
     });
-  } else {
+  }  else {
     $routeProvider  
     .when("/", {
       templateUrl : "app/Posts/posts.html",

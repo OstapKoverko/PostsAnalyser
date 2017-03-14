@@ -1,4 +1,4 @@
-POSTS ANALYSER v.8.2
+POSTS ANALYSER v.8.3
 ------------------------
 
 
@@ -9,6 +9,9 @@ gh-pages link: https://ostapkoverko.github.io/AngularY01/
 
 Release notes
 ------------
+Release v.8.3
++ Added radio buttons for type storage changing
+
 Release v.8.0
 + Added provider for style switcher
 

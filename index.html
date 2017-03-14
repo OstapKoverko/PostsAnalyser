@@ -15,17 +15,17 @@
 		
 	</head>
 	<body>
-		<div ng-app="myApp" ng-cloak ng-init="materialDesign = false">
+		<div ng-app="myApp" ng-controller="postsController" ng-cloak ng-init="materialDesign = false">
 			
 			<!-- ##### DESIGN SWITCHER ##### -->
-			<span class="mdl-chip mdl-chip--contact" style="position: fixed; top: 80px; right: 70px; z-index: 2; width: 130px">
+			<span class="mdl-chip mdl-chip--contact" style="position: fixed; top: 80px; right: 70px; z-index: 2; width: 110px">
 				<a href="?framework=bootstrap" ng-click="materialDesign = !materialDesign">
 					<span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">B</span>
 					<span class="mdl-chip__text">Bootstrap</span>
 				</a>
 			</span>
 			
-			<span class="mdl-chip mdl-chip--contact" style="position: fixed; top: 115px; right: 70px; z-index: 2; width: 130px">
+			<span class="mdl-chip mdl-chip--contact" style="position: fixed; top: 115px; right: 70px; z-index: 2; width: 110px">
 				<a href="?framework=material" ng-click="materialDesign = !materialDesign">
 					<span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">M</span>
 					<span class="mdl-chip__text">Material</span>
@@ -33,21 +33,25 @@
 			</span>
 			
 			<span class="mdl-chip" style="position: fixed; top: 170px; right: 70px; z-index: 2; width: 130px">
-				<span class="mdl-chip__text">
-					<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="localStorage">
-			  		<input type="radio" id="localStorage" class="mdl-radio__button" name="storage" ng-click="setLocalStorage()" checked>
-					</label>
-					Local storage
-				</span>
+				<!--<a href="?storage=local">-->
+					<span class="mdl-chip__text">
+						<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="localStorage">
+				  			<input type="radio" id="localStorage" class="mdl-radio__button" name="storage" ng-click="setLocalStorage()" checked>
+						</label>
+						Local storage
+					</span>
+				<!--</a>-->
 			</span>
 			
 			<span class="mdl-chip" style="position: fixed; top: 205px; right: 70px; z-index: 2; width: 130px">
-				<span class="mdl-chip__text">
-					<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="webSQL">
-  					<input type="radio" id="webSQL" class="mdl-radio__button" name="storage" ng-click="setWebSQL()">
-  				</label>
-					Web SQL
-				</span>
+				<!--<a href="?storage=sql">-->
+					<span class="mdl-chip__text">
+						<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="webSQL">
+	  						<input type="radio" id="webSQL" class="mdl-radio__button" name="storage" ng-click="setWebSQL()">
+	  					</label>
+						Web SQL
+					</span>
+				<!--</a>-->
 			</span>
 	
 			<!-- ############################ -->
@@ -57,7 +61,7 @@
 				<header class="mdl-layout__header ">
 					<div class="mdl-layout__header-row">
 						<!-- Title -->
-						<span class="mdl-layout-title">Posts analyzer v.8.2</span>
+						<span class="mdl-layout-title">Posts analyzer v.8.3</span>
 						<!-- Add spacer, to align navigation to the right -->
 						<div class="mdl-layout-spacer"></div>
 						<nav class="mdl-navigation">
@@ -88,7 +92,7 @@
 						<nav class="navbar navbar-default">
 							<div class="container-fluid">
 								<div class="navbar-header">
-									<span class="navbar-brand">Posts analyzer v.8.2</span>
+									<span class="navbar-brand">Posts analyzer v.8.3</span>
 									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
 									<span class="glyphicon glyphicon-menu-down"></span>
 										<span class="icon-bar"></span>

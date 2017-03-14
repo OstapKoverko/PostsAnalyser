@@ -1,5 +1,4 @@
 app.controller('postsController', function($scope, $filter, PostsService) {
-	var storage = 'localStorage';
 	$scope.loading = true;
 	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
@@ -13,14 +12,16 @@ app.controller('postsController', function($scope, $filter, PostsService) {
 		getPosts();
 	};
 	$scope.setLocalStorage = function () {
+		$scope.storage = 'localStorage';
 		debugger;
 	};
 	$scope.setWebSQL = function () {
+		$scope.storage = 'WebSQL';
 		debugger;
-	}
+	};
 	
 	function getPosts () {
-		PostsService.getPosts($scope.pageSize, $scope.pageNumber, storage).then(
+		PostsService.getPosts($scope.pageSize, $scope.pageNumber, $scope.storage).then(
 			function onSuccess(response) {
 				$scope.postsErrorMesage = null;
 				$scope.posts = response.posts;
