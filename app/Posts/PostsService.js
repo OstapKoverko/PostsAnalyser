@@ -29,7 +29,7 @@ app.service('PostsService', function($http, $filter, $q) {
 					tx.executeSql('CREATE TABLE IF NOT EXISTS POSTS (timeStorage, posts)');
 					tx.executeSql("SELECT * FROM POSTS", [], function(tx, result) {
 						var i = result.rows.length - 1;
-						if (i == -1 || Date.now() - result.rows.item(i)['timeStorage'] > 60000) {
+						if (i == -1 || Date.now() - result.rows.item(i)['timeStorage'] > 300000) {
 					 		tx.executeSql("INSERT INTO POSTS (timeStorage, posts) values(?, ?)",
 				  			[new Date().getTime(), window.angular.toJson(posts)], null, null
 				  		);
@@ -57,7 +57,7 @@ app.service('PostsService', function($http, $filter, $q) {
 				}
 			);
 			function caching(posts){
-				if (!window.localStorage.timeStorage || Date.now() - window.localStorage.timeStorage > 60000) {
+				if (!window.localStorage.timeStorage || Date.now() - window.localStorage.timeStorage > 300000) {
 					window.localStorage.timeStorage = Date.parse($filter('date')(new Date(),'yyyy-MM-dd HH:mm:ss'));	
 					window.localStorage.posts = window.angular.toJson(posts);
 					debugger;

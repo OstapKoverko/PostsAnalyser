@@ -2,10 +2,14 @@ POSTS ANALYSER v.8.4
 ------------------------
 
 
-My first project on AngularJS with AJAX use
+My first project on AngularJS with AJAX use.
+This application gets data from jsonplaceholder.typicode.com - online REST API 
 
 gh-pages link: https://ostapkoverko.github.io/AngularY01/   
 
+Usage
+------------
+You can choose frameworks and data storages. Updating cached data after 5 minutes.
 
 Release notes
 ------------

@@ -2,7 +2,7 @@ app.controller('postsController', function($scope, $filter, PostsService, styleS
 	$scope.loading = true;
 	$scope.pageNumber = 1;
 	$scope.pageSize = 10;
-	$scope.framework = styleSwitcher;
+	$scope.framework = styleSwitcher || 'bootstrap';
 	$scope.setPageSize = function (pageSize) {
 		$scope.pageSize = pageSize;
 		$scope.pageNumber = 1;
