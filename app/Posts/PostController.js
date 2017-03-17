@@ -1,4 +1,4 @@
-app.controller('postController', function($scope, $routeParams, PostsService){
+app.controller('postController', function($scope, $routeParams, UpgradeDomService, PostsService){
 	// USE PROMISES
 	$scope.loading = true;
 	$scope.formEditable = false;
@@ -46,10 +46,6 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 			$scope.comments = response.data;
 			$scope.commentsErrorMessage = null;
 			$scope.loading = false;
-			observer.observe(document, {
-				childList : true,
-				subtree : true
-			});
 		},
 		function onError(response) {
 			console.log("GetCommentsByPostId method's status: " + response.status + " " + response.statusText);
@@ -58,20 +54,6 @@ app.controller('postController', function($scope, $routeParams, PostsService){
 		}
 	);
 
-	// DOM Updater for MDL new component
-	var observer = new window.MutationObserver(function(mutations) {
-		var upgrade = false;
-		for (var i = 0; i < mutations.length; i++) {
-			if (mutations[i].addedNodes.length > 0) {
-				upgrade = true;
-				break;
-			} 
-		}
-		if (upgrade) {
-			// If there is at least a new element, upgrade the DOM.
-			// Note: upgrading elements one by one seems to insert bugs in MDL 
-			window.componentHandler.upgradeDom();
-		}
-	});
+	UpgradeDomService.upgradeDom();
 	
 });

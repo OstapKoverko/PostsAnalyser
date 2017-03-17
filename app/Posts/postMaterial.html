@@ -28,15 +28,15 @@
 					<form name="postForm" ng-submit="savePost(postForm)" ng-if="!postErrorMessage" novalidate>
 						<fieldset>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-							<input class="mdl-textfield__input is-focused" type="text" id="title" name="title" ng-model="post.title" ng-readonly="!formEditable" ng-required="true">
-							<label class="mdl-textfield__label" for="title">Title</label>
+							<label class="mdl-textfield__label" for="title"></label>
+							<input class="mdl-textfield__input" type="text" id="title" name="title" ng-model="post.title" ng-readonly="!formEditable" ng-required="true">
 							<span class="mdl-tooltip mdl-tooltip--validation" for="title" ng-if="postForm.title.$invalid">
 								<span ng-if="postForm.title.$invalid">Required.</span>
 							</span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-							<textarea class="mdl-textfield__input is-focused" type="text" rows="4" id="body" name="memo" ng-model="post.body" ng-readonly="!formEditable" ng-required="true" style="width: 100%"></textarea>
-							<label class="mdl-textfield__label" for="body">Memo</label>
+							<label class="mdl-textfield__label" for="body"></label>
+							<textarea class="mdl-textfield__input" type="text" rows="4" id="body" name="memo" ng-model="post.body" ng-readonly="!formEditable" ng-required="true" style="width: 100%"></textarea>
 							<span class="mdl-tooltip mdl-tooltip--validation" for="body" ng-if="postForm.memo.$invalid">
 								<span ng-if="postForm.memo.$invalid">Required.</span>
 							</span>

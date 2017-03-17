@@ -1,4 +1,4 @@
-POSTS ANALYSER v.8.4
+POSTS ANALYSER v.8.5
 ------------------------
 
 
