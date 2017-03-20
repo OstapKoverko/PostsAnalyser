@@ -25,7 +25,6 @@ app.service('UpgradeDomService', function() {
   			// If there is at least a new element, upgrade the DOM.
   			// Note: upgrading elements one by one seems to insert bugs in MDL 
   			window.componentHandler.upgradeDom();
-  			debugger;
   		}
   	});
   	observer.observe(document, {

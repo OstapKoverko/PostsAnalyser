@@ -1,4 +1,4 @@
-POSTS ANALYSER v.8.5
+POSTS ANALYSER v.8.6
 ------------------------
 
 
@@ -13,8 +13,11 @@ You can choose frameworks and data storages. Updating cached data after 5 minute
 
 Release notes
 ------------
+Release v.8.6
++ Functions caching separated in external services
+
 Release v.8.4
-+ Fix bug with style switcher
++ Fixed bug with style switcher
 
 Release v.8.3
 + Added radio buttons for type storage changing
